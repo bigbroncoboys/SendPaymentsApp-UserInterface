@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
+import { Button } from 'react-native-elements';
 import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
@@ -42,6 +42,14 @@ export default function HomeScreen() {
           <Text style={styles.getStartedText}>
             Testing the changes.
           </Text>
+        </View>
+
+        <View style={styles.chargeContainer}>
+          <Button
+            buttonStyle={styles.button}
+            title="Charge"
+            onPress={() => {}}
+          />
         </View>
 
         <View style={styles.helpContainer}>
@@ -109,6 +117,12 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
+  button: {
+       backgroundColor: '#e60f00',
+       borderColor: '#fff',
+       marginHorizontal: 30,
+       marginVertical: 50
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
