@@ -35,3 +35,5 @@ Scan the QR code
 The app will load an emulation of our app in it's current stage
 
 Keep checking back for updates!
+
+Please refer to the github Issues and Projects tab for more information on our To Do List
