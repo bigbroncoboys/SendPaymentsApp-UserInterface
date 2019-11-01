@@ -5,9 +5,9 @@ import {
     Alert
 } from 'react-native';
 
-import { Container, Header, Title, Content, Item, Label, Input, Button, Left, Right, Body, Text } from 'native-base';
+import { Container, Content, Item, Label, Input, Button, Text } from 'native-base';
 
-export default function HomeScreen() {
+const HomeScreen = ({ navigation }) => {
     const [username, onChangeUsername] = React.useState('');
     const [password, onChangePassword] = React.useState('');
 
@@ -16,7 +16,7 @@ export default function HomeScreen() {
     }
 
     const onPressSignUp = () => {
-        Alert.alert('You have pressed the sign up button.');
+        navigation.navigate('Register');
     }
 
     const onPressForgotPassword = () => {
@@ -25,16 +25,8 @@ export default function HomeScreen() {
 
     return (
         <Container>
-            <Header>
-                <Left />
-                <Body>
-                    <Title>Sign In</Title>
-                </Body>
-                <Right />
-            </Header>
-
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{ alignItems: 'center' }}>
                     <Image source={require('../assets/images/billy_bronco.png')} />
                 </View>
 
@@ -67,6 +59,7 @@ export default function HomeScreen() {
 }
 
 HomeScreen.navigationOptions = {
-    header: null,
+    title: 'Sign In'
 };
 
+export default HomeScreen
