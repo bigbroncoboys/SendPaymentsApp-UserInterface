@@ -4,9 +4,14 @@ import {
     Alert
 } from 'react-native';
 
+import { DangerZone} from 'expo';
+
+
 import { Container, Content, Item, Label, Input, Button, Text, H1 } from 'native-base';
 
 const HomeScreen = ({ navigation }) => {
+
+    const { Stripe } = DangerZone;
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState('');
 
@@ -20,6 +25,10 @@ const HomeScreen = ({ navigation }) => {
 
     const onPressForgotPassword = () => {
         Alert.alert('You have pressed the forgot password button.');
+    }
+
+    const onPressCharge = () => {
+        Alert.alert('You have pressed the Charge button.');
     }
 
     return (
@@ -53,6 +62,10 @@ const HomeScreen = ({ navigation }) => {
 
                 <View style={{ padding: 10, paddingTop: -5 }}>
                     <Button light style={{ justifyContent: 'center' }} onPress={onPressForgotPassword}><Text>Forgot Password</Text></Button>
+                </View>
+
+                <View style={{ padding: 10, paddingTop: -10 }}>
+                    <Button light style={{ justifyContent: 'center' }} onPress={onPressCharge}><Text>Charge</Text></Button>
                 </View>
             </Content>
         </Container >
