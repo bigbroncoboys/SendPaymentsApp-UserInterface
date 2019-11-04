@@ -4,7 +4,7 @@ import {
     Alert
 } from 'react-native';
 
-import { DangerZone} from 'expo';
+import { DangerZone } from 'expo';
 
 
 import { Container, Content, Item, Label, Input, Button, Text, H1 } from 'native-base';
@@ -28,7 +28,7 @@ const HomeScreen = ({ navigation }) => {
     }
 
     const onPressCharge = () => {
-        Alert.alert('You have pressed the Charge button.');
+        navigation.navigate('Charge');
     }
 
     return (
@@ -68,7 +68,7 @@ const HomeScreen = ({ navigation }) => {
                     <Button light style={{ justifyContent: 'center' }} onPress={onPressCharge}><Text>Charge</Text></Button>
                 </View>
             </Content>
-        </Container >
+        </Container>
     );
 }
 

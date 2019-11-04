@@ -11,7 +11,6 @@ const RegisterScreen = () => {
     const [businessType, onChangeBusinessType] = React.useState('');
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState('');
-
     return (
         <Container>
             <Content>
