@@ -11,11 +11,11 @@ const ChargeScreen = () => {
     return (
         <Container>
             <Content>
-                <View style={{ padding: 10, alignItems: 'center' }}>
+                <View style={{ paddingTop: 50, alignItems: 'center' }}>
                     <H1>Start sending cash!</H1>
                 </View>
 
-                <View style={{ padding: 10 }}>
+                <View style={{ padding: 100, paddingTop: 200 }}>
                     <Button primary style={{ justifyContent: 'center' }}><Text>Charge</Text></Button>
                 </View>
             </Content>
