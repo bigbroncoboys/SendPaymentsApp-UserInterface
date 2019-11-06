@@ -8,6 +8,8 @@ import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, Lis
 import Divider from 'react-native-divider';
 
 const ChargeScreen = () => {
+    const [amount, onChangeAmount] = React.useState('');
+
     return (
         <Container>
             <Content>
@@ -15,11 +17,22 @@ const ChargeScreen = () => {
                     <H1>Start sending cash!</H1>
                 </View>
 
-                <View style={{ padding: 100, paddingTop: 200 }}>
+                <View style={{ padding: 50, paddingTop: 150, alignItems: 'center' }}>
+                    <Item inlineLabel>
+                        <Label>Amount: $</Label>
+                        <Input
+                          keyboardType = 'number-pad'
+                          onChangeText = {text => onChangeAmount(text)}
+                          value = {amount}
+                        />
+                    </Item>
+                </View>
+
+                <View style={{ padding: 50, paddingTop: 5 }}>
                     <Button primary style={{ justifyContent: 'center' }}><Text>Charge</Text></Button>
                 </View>
             </Content>
-        </Container >
+        </Container>
     );
 }
 
