@@ -9,6 +9,7 @@ import Divider from 'react-native-divider';
 import { PaymentsStripe } from 'expo-payments-stripe';
 
 const ChargeScreen = () => {
+<<<<<<< HEAD
 
     const { Stripe } = PaymentsStripe;
 
@@ -54,19 +55,33 @@ const ChargeScreen = () => {
 
     const token2 = stripe.paymentRequestWithCardFormAsync(options);
 
+=======
+    const [amount, onChangeAmount] = React.useState('');
+>>>>>>> 5fe1630a24a73d112eba487906b90d5ed5dbfae3
 
     return (
         <Container>
             <Content>
-                <View style={{ padding: 10, alignItems: 'center' }}>
+                <View style={{ paddingTop: 50, alignItems: 'center' }}>
                     <H1>Start sending cash!</H1>
                 </View>
 
-                <View style={{ padding: 10 }}>
+                <View style={{ padding: 50, paddingTop: 150, alignItems: 'center' }}>
+                    <Item inlineLabel>
+                        <Label>Amount: $</Label>
+                        <Input
+                          keyboardType = 'number-pad'
+                          onChangeText = {text => onChangeAmount(text)}
+                          value = {amount}
+                        />
+                    </Item>
+                </View>
+
+                <View style={{ padding: 50, paddingTop: 5 }}>
                     <Button primary style={{ justifyContent: 'center' }}><Text>Charge</Text></Button>
                 </View>
             </Content>
-        </Container >
+        </Container>
     );
 }
 
