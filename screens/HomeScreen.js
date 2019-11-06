@@ -4,14 +4,10 @@ import {
     Alert
 } from 'react-native';
 
-//import { DangerZone } from 'expo';
-
-
 import { Container, Content, Item, Label, Input, Button, Text, H1 } from 'native-base';
 
 const HomeScreen = ({ navigation }) => {
 
-    //const { Stripe } = DangerZone;
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState('');
 
