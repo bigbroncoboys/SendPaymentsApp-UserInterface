@@ -80,12 +80,16 @@ const RegisterScreen = () => {
                     </List>
                 </View>
 
-                <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'flex-end' }}>
-                    <Button info><Text>Add New Employee</Text></Button>
+                <View style = {{ flexDirection: 'row', padding: 10, justifyContent: 'flex-end' }}>
+                    <Button info style = {{ backgroundColor: '#4c614c' }}>
+                        <Text>Add New Employee</Text>
+                    </Button>
                 </View>
 
-                <View style={{ padding: 10 }}>
-                    <Button primary style={{ justifyContent: 'center' }}><Text>Continue</Text></Button>
+                <View style = {{ padding: 10 }}>
+                    <Button primary style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
+                        <Text>Continue</Text>
+                    </Button>
                 </View>
             </Content>
         </Container >

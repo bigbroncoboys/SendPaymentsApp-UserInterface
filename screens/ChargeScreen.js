@@ -10,26 +10,43 @@ import Divider from 'react-native-divider';
 const ChargeScreen = () => {
     const [amount, onChangeAmount] = React.useState('');
 
+    const onPressCharge = () => {
+        Alert.alert(
+            `Send $${amount}?`,
+            '',
+            [
+                {text: 'Confirm', onPress: () => console.log('Sent!')},
+                {text: 'Cancel', onPress: () => console.log('Transaction Cancelled')},
+            ],
+        );
+    }
+
     return (
         <Container>
             <Content>
-                <View style={{ paddingTop: 50, alignItems: 'center' }}>
-                    <H1>Start sending cash!</H1>
+                <View style = {{ paddingTop: 200, alignItems: 'center' }}>
+                    <H1 style = {{ fontWeight: 'bold' }}>Start sending cash!</H1>
                 </View>
 
-                <View style={{ padding: 50, paddingTop: 150, alignItems: 'center' }}>
+                <View style = {{ padding: 50, paddingTop: 25, alignItems: 'center' }}>
                     <Item inlineLabel>
                         <Label>Amount: $</Label>
                         <Input
-                          keyboardType = 'number-pad'
-                          onChangeText = {text => onChangeAmount(text)}
-                          value = {amount}
+                            keyboardType = 'decimal-pad'
+                            keyboardAppearance = 'dark'
+                            placeholder = '00.00'
+                            maxLength = {6}
+                            onChangeText = {text => onChangeAmount(text)}
+                            value = {amount}
                         />
                     </Item>
                 </View>
 
-                <View style={{ padding: 50, paddingTop: 5 }}>
-                    <Button primary style={{ justifyContent: 'center' }}><Text>Charge</Text></Button>
+                <View style = {{ padding: 50, paddingTop: 0 }}>
+                    <Button primary style = {{justifyContent: 'center', backgroundColor: '#0a8508' }}
+                        onPress = {onPressCharge}>
+                        <Text style = {{ fontWeight: 'bold' }}>Charge</Text>
+                    </Button>
                 </View>
             </Content>
         </Container>

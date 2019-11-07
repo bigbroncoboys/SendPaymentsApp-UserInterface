@@ -34,38 +34,62 @@ const HomeScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <H1>Account Credentials</H1>
+                <View style={{ padding: 10, alignItems: 'center'}}>
+                    <H1 style = {{ fontWeight: 'bold' }}>Account Credentials</H1>
                 </View>
 
                 <View style={{ padding: 10 }}>
                     <Item inlineLabel>
-                        <Label>Email:</Label>
-                        <Input onChangeText={text => onChangeEmail(text)} value={email} />
+                        <Label>
+                            Email:
+                        </Label>
+                        <Input
+                            keyboardAppearance = 'dark'
+                            onChangeText={text => onChangeEmail(text)}
+                            value={email}
+                        />
                     </Item>
 
                     <Item inlineLabel last>
-                        <Label>Password:</Label>
-                        <Input onChangeText={text => onChangePassword(text)} value={password} />
+                        <Label>
+                            Password:
+                        </Label>
+                        <Input
+                            keyboardAppearance = 'dark'
+                            onChangeText={text => onChangePassword(text)}
+                            value={password}
+                        />
                     </Item>
                 </View>
 
-                <View style={{ flexDirection: 'row', padding: 10 }}>
-                    <View style={{ flex: 1, paddingRight: 5 }}>
-                        <Button primary style={{ justifyContent: 'center' }} onPress={onPressSignIn}><Text>Sign In</Text></Button>
+                <View style = {{ flexDirection: 'row', padding: 10 }}>
+                    <View style = {{ flex: 1, paddingRight: 5 }}>
+                        <Button primary style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}
+                            onPress = {onPressSignIn}>
+                            <Text style = {{ fontWeight: 'bold' }}>Sign In</Text>
+                        </Button>
                     </View>
 
-                    <View style={{ flex: 1, paddingLeft: 5 }}>
-                        <Button info style={{ justifyContent: 'center' }} onPress={onPressSignUp}><Text>Sign Up</Text></Button>
+                    <View style = {{ flex: 1, paddingLeft: 5 }}>
+                        <Button info style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}
+                            onPress = {onPressSignUp}>
+                            <Text style = {{ fontWeight: 'bold' }}>Sign Up</Text>
+                        </Button>
                     </View>
                 </View>
 
                 <View style={{ padding: 10, paddingTop: -5 }}>
-                    <Button light style={{ justifyContent: 'center' }} onPress={onPressForgotPassword}><Text>Forgot Password</Text></Button>
+                    <Button light style={{ justifyContent: 'center' }}
+                        onPress={onPressForgotPassword}>
+                        <Text>Forgot Password</Text>
+                    </Button>
                 </View>
 
                 <View style={{ padding: 10, paddingTop: -10 }}>
-                    <Button light style={{ justifyContent: 'center' }} onPress={onPressCharge}><Text>Charge</Text></Button>
+                    <Button light style={{ justifyContent: 'center' }}
+                        onPress={onPressCharge}>
+                        <Text>[PH]Charge Page</Text>
+                    </Button>
                 </View>
             </Content>
         </Container>
