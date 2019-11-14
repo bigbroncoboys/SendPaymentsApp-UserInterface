@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    View
-} from 'react-native';
-
+import { View } from 'react-native';
 import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, ListItem, Picker, Icon } from 'native-base';
 import Divider from 'react-native-divider';
 
@@ -14,27 +11,27 @@ const RegisterScreen = () => {
     return (
         <Container>
             <Content>
-                <View style={{ alignItems: 'center', paddingTop: 30 }}>
+                <View style = {{ alignItems: 'center', paddingTop: 30 }}>
                     <H1>Welcome to the POS!</H1>
-                    <Text style={{ fontSize: 12 }}>Please describe your business.</Text>
+                    <Text style = {{ fontSize: 12 }}>Please describe your business.</Text>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: 30 }}>
-                    <Divider><H3 style={{ fontWeight: 'bold' }}>Credentials</H3></Divider>
+                <View style = {{ padding: 10, paddingTop: 30 }}>
+                    <Divider><H3 style = {{ fontWeight: 'bold' }}>Credentials</H3></Divider>
 
                     <Item inlineLabel>
                         <Label>Email:</Label>
-                        <Input onChangeText={text => onChangeEmail(text)} value={email} />
+                        <Input onChangeText = {text => onChangeEmail(text)} value = {email} />
                     </Item>
 
                     <Item inlineLabel last>
                         <Label>Password:</Label>
-                        <Input onChangeText={text => onChangePassword(text)} value={password} />
+                        <Input onChangeText = {text => onChangePassword(text)} value = {password} />
                     </Item>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: 20 }}>
-                    <Divider><H3 style={{ fontWeight: 'bold' }}>About Your Business</H3></Divider>
+                <View style = {{ padding: 10, paddingTop: 20 }}>
+                    <Divider><H3 style = {{ fontWeight: 'bold' }}>About Your Business</H3></Divider>
 
                     <Item inlineLabel>
                         <Label>Business Name:</Label>
@@ -49,24 +46,24 @@ const RegisterScreen = () => {
                     <Item inlineLabel picker>
                         <Label>Type of Business:</Label>
                         <Picker
-                            mode='dropdown'
-                            iosIcon={<Icon name='arrow-down' />}
-                            placeholder='Select Type'
-                            placeholderStyle={{ color: '#bfc6ea' }}
-                            placeholderIconColor='#007aff'
-                            onValueChange={val => onChangeBusinessType(val)}
-                            selectedValue={businessType}
+                            mode = 'dropdown'
+                            iosIcon = {<Icon name = 'arrow-down' />}
+                            placeholder = 'Select Type'
+                            placeholderStyle = {{ color: '#bfc6ea' }}
+                            placeholderIconColor = '#007aff'
+                            onValueChange = {val => onChangeBusinessType(val)}
+                            selectedValue = {businessType}
                         >
-                            <Picker.Item label='Restaurant' value='key0' />
-                            <Picker.Item label='Salon' value='key1' />
-                            <Picker.Item label='Repair Shop' value='key2' />
-                            <Picker.Item label='Convenience Store' value='key3' />
+                            <Picker.Item label = 'Restaurant' value = 'key0' />
+                            <Picker.Item label = 'Salon' value = 'key1' />
+                            <Picker.Item label = 'Repair Shop' value = 'key2' />
+                            <Picker.Item label = 'Convenience Store' value = 'key3' />
                         </Picker>
                     </Item>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: 20 }}>
-                    <Divider><H3 style={{ fontWeight: 'bold' }}>Employees</H3></Divider>
+                <View style = {{ padding: 10, paddingTop: 20 }}>
+                    <Divider><H3 style = {{ fontWeight: 'bold' }}>Employees</H3></Divider>
                     <List>
                         <ListItem>
                             <Text>Simon Mignolet</Text>

@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    View,
-    Alert
-} from 'react-native';
+import { View, Alert } from 'react-native';
 
 import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, ListItem, Picker, Icon } from 'native-base';
 
@@ -61,72 +58,72 @@ const CreditCardScreen = () => {
 
     return (
         <Container>
-            <Content>
-                <View style = {{ paddingTop: 200, alignItems: 'center' }}>
-                    <H1 style = {{ fontWeight: 'bold' }}>Enter Credit Card Information</H1>
+            <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
+                <View style = {{ paddingTop: 0, alignItems: 'center' }}>
+                    <H1 style = {{ fontWeight: 'bold' }}>Credit Card Information</H1>
                 </View>
 
-                <View style = {{ padding: 5, paddingTop: 25, alignItems: 'center' }}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
                     <Item inlineLabel>
-                        <Label>
-                            CreditCardNumber:
-                        </Label>
+                        <Label>Name on Card:</Label>
                         <Input
                             keyboardAppearance = 'dark'
-                            onChangeText={text => onChangeCreditCard(text)}
-                            value={CreditCard}
+                            onChangeText = {text => onChangeName(text)}
+                            value = {Name}
                         />
                     </Item>
                 </View>
 
-                <View style = {{ padding: 5, paddingTop: 20, alignItems: 'center' }}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
                     <Item inlineLabel>
-                        <Label>
-                            ExpMonth:
-                        </Label>
+                        <Label>Number:</Label>
                         <Input
+                            keyboardType = 'number-pad'
                             keyboardAppearance = 'dark'
-                            onChangeText={text => onChangeExpMonth(text)}
-                            value={ExpMonth}
+                            maxLength = {16}
+                            onChangeText = {text => onChangeCreditCard(text)}
+                            value = {CreditCard}
                         />
                     </Item>
                 </View>
 
-                <View style = {{ padding: 5, paddingTop: 15, alignItems: 'center' }}>
-                    <Item inlineLabel>
-                        <Label>
-                            ExpYear:
-                        </Label>
-                        <Input
-                            keyboardAppearance = 'dark'
-                            onChangeText={text => onChangeExpYear(text)}
-                            value={ExpYear}
-                        />
-                    </Item>
+                <View style = {{ flexDirection: 'row', padding: 10 }}>
+                    <View style = {{ flex: 1, paddingRight: 5, alignItems: 'center' }}>
+                        <Item inlineLabel>
+                            <Label>Month:</Label>
+                            <Input
+                                keyboardType = 'number-pad'
+                                keyboardAppearance = 'dark'
+                                maxLength = {2}
+                                onChangeText = {text => onChangeExpMonth(text)}
+                                value = {ExpMonth}
+                            />
+                        </Item>
+                    </View>
+
+                    <View style = {{ flex: 1, paddingLeft: 5, alignItems: 'center' }}>
+                        <Item inlineLabel>
+                            <Label>Year:</Label>
+                            <Input
+                                keyboardType = 'number-pad'
+                                keyboardAppearance = 'dark'
+                                maxLength = {2}
+                                onChangeText = {text => onChangeExpYear(text)}
+                                value = {ExpYear}
+                            />
+                        </Item>
+                    </View>
                 </View>
 
-                <View style = {{ padding: 5, paddingTop: 10, alignItems: 'center' }}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
                     <Item inlineLabel>
-                        <Label>
-                            CVC:
-                        </Label>
+                        <Label>CVC:</Label>
                         <Input
+                            keyboardType = 'number-pad'
                             keyboardAppearance = 'dark'
-                            onChangeText={text => onChangeCVC(text)}
-                            value={CVC}
-                        />
-                    </Item>
-                </View>
-
-                <View style = {{ padding: 5, paddingTop: 5, alignItems: 'center' }}>
-                    <Item inlineLabel>
-                        <Label>
-                            Name:
-                        </Label>
-                        <Input
-                            keyboardAppearance = 'dark'
-                            onChangeText={text => onChangeName(text)}
-                            value={Name}
+                            maxLength = {3}
+                            onChangeText = {text => onChangeCVC(text)}
+                            value = {CVC}
                         />
                     </Item>
                 </View>
@@ -137,8 +134,6 @@ const CreditCardScreen = () => {
                         <Text style = {{ fontWeight: 'bold' }}>Confirm</Text>
                     </Button>
                 </View>
-
-
             </Content>
         </Container>
     );

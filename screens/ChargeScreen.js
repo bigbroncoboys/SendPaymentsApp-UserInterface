@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-    View,
-    Alert
-} from 'react-native';
-
+import { View, Alert } from 'react-native';
 import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, ListItem, Picker, Icon } from 'native-base';
 import Divider from 'react-native-divider';
 

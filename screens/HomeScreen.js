@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-    View,
-    Alert
-} from 'react-native';
-
+import { View, Alert } from 'react-native';
 import { Container, Content, Item, Label, Input, Button, Text, H1 } from 'native-base';
 
 const HomeScreen = ({ navigation }) => {
@@ -29,31 +25,27 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <Container>
-            <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style={{ padding: 10, alignItems: 'center'}}>
+            <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
+                <View style = {{ padding: 10, alignItems: 'center'}}>
                     <H1 style = {{ fontWeight: 'bold' }}>Account Credentials</H1>
                 </View>
 
-                <View style={{ padding: 10 }}>
+                <View style = {{ padding: 10 }}>
                     <Item inlineLabel>
-                        <Label>
-                            Email:
-                        </Label>
+                        <Label>Email:</Label>
                         <Input
                             keyboardAppearance = 'dark'
-                            onChangeText={text => onChangeEmail(text)}
-                            value={email}
+                            onChangeText = {text => onChangeEmail(text)}
+                            value = {email}
                         />
                     </Item>
 
                     <Item inlineLabel last>
-                        <Label>
-                            Password:
-                        </Label>
+                        <Label>Password:</Label>
                         <Input
                             keyboardAppearance = 'dark'
-                            onChangeText={text => onChangePassword(text)}
-                            value={password}
+                            onChangeText = {text => onChangePassword(text)}
+                            value = {password}
                         />
                     </Item>
                 </View>
@@ -74,16 +66,16 @@ const HomeScreen = ({ navigation }) => {
                     </View>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: -5 }}>
-                    <Button light style={{ justifyContent: 'center' }}
-                        onPress={onPressForgotPassword}>
+                <View style = {{ padding: 10, paddingTop: -5 }}>
+                    <Button light style = {{ justifyContent: 'center' }}
+                        onPress = {onPressForgotPassword}>
                         <Text>Forgot Password</Text>
                     </Button>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: -10 }}>
-                    <Button light style={{ justifyContent: 'center' }}
-                        onPress={onPressCharge}>
+                <View style = {{ padding: 10, paddingTop: -10 }}>
+                    <Button light style = {{ justifyContent: 'center' }}
+                        onPress = {onPressCharge}>
                         <Text>[PH]Charge Page</Text>
                     </Button>
                 </View>
