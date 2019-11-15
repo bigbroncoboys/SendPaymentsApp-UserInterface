@@ -2,12 +2,11 @@ import React from 'react';
 import { View, Alert } from 'react-native';
 
 import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, ListItem, Picker, Icon } from 'native-base';
+import { amount } from '../screens/ChargeScreen';
 
 const CreditCardScreen = () => {
 
-    var cardToken;
-
-    var stripe = require("stripe-client")("sk_test_XfSN5Jg519ofs2eCCZny9bUg000Vt1SumR");
+    var stripe = require("stripe-client")("pk_test_xInOIuq3RafRlvHBKB51I2gi00pgXQ2TKj");
 
     const [CreditCard, onChangeCreditCard] = React.useState('');
     const [ExpMonth, onChangeExpMonth] = React.useState('');
@@ -16,44 +15,54 @@ const CreditCardScreen = () => {
     const [Name, onChangeName] = React.useState('');
 
     var information = {
-        number: CreditCard,
-        exp_month: ExpMonth,
-        exp_year: ExpYear,
-        cvc: CVC,
-        name: Name
+        card: {
+            number: CreditCard,
+            exp_month: ExpMonth,
+            exp_year: ExpYear,
+            cvc: CVC,
+            name: Name
+        }
+
     }
 
-    var customer = {
-        person: {
-            name:Name,
-            relationship: {owner: true},
-        },
+    var testInfo = {
+        card: {
+            number: '4242424242424242',
+            exp_month: '10',
+            exp_year: '25',
+            cvc: '123',
+            name: 'John Doe'
+        }
     }
 
     async function onPressConfirm() {
-        const response = await fetch('http://localhost:3000');
-        const myJson = await response.json();
-        console.log(JSON.stringify(myJson));
-        //var card = await stripe.createToken(information);
-        //var token = card.id;
+        var card = await stripe.createToken(testInfo);
+        var token = card.id;
+
+        console.log(card);
         //call Backend
-        //const response = await fetch ('http://localhost:3000/app.js');
-        /*
-        const formData = new FormData();
-        formData.append('Card Information', information);
+
+        const formData = {
+            tok: token,
+            amt: amount,
+        };
 
         try {
-            const response = await fetch('https://localhost:3000/', {
+            const response = await fetch('http://fe89c387.ngrok.io' +
+                '', {
                 method: 'POST',
-                body: formData
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
-            const result = await response.json();
-            console.log('Success:', JSON.stringify(result));
+            const result = await response;
+            console.log('Success:');
         } catch (error) {
             console.error('Error:', error);
         }
 
-         */
+
     }
 
     return (

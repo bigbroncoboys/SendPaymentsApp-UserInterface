@@ -5,7 +5,7 @@ import Divider from 'react-native-divider';
 
 const ChargeScreen = ({ navigation }) => {
 
-    //stripe.
+
 
     const [amount, onChangeAmount] = React.useState('');
 
