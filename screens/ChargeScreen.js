@@ -35,6 +35,7 @@ const ChargeScreen = ({ navigation }) => {
                     <Item inlineLabel>
                         <Label>Amount: $</Label>
                         <Input
+                            type = "number"
                             keyboardType = 'decimal-pad'
                             keyboardAppearance = 'dark'
                             placeholder = '00.00'
@@ -45,7 +46,33 @@ const ChargeScreen = ({ navigation }) => {
                     </Item>
                 </View>
 
-                <View style = {{ padding: 50, paddingTop: 0 }}>
+                <View style = {{ flexDirection: 'row', padding: 10 }}>
+                    <View style = {{ flex: 1, paddingRight: 5 }}>
+                        <Button primary style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}>
+                            <Text style = {{ fontWeight: 'bold' }}>$5</Text>
+                        </Button>
+                    </View>
+
+                    <View style = {{ flex: 1, paddingRight: 2.5 }}>
+                        <Button primary style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}>
+                            <Text style = {{ fontWeight: 'bold' }}>$10</Text>
+                        </Button>
+                    </View>
+
+                    <View style = {{ flex: 1, paddingLeft: 2.5 }}>
+                        <Button primary style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}>
+                            <Text style = {{ fontWeight: 'bold' }}>$20</Text>
+                        </Button>
+                    </View>
+
+                    <View style = {{ flex: 1, paddingLeft: 5 }}>
+                        <Button info style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}>
+                            <Text style = {{ fontWeight: 'bold' }}>$50</Text>
+                        </Button>
+                    </View>
+                </View>
+
+                <View style = {{ padding: 10, paddingTop: 0 }}>
                     <Button primary style = {{justifyContent: 'center', backgroundColor: '#0a8508' }}
                         onPress = {onPressCharge}>
                         <Text style = {{ fontWeight: 'bold' }}>Charge</Text>
