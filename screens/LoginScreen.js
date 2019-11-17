@@ -117,7 +117,11 @@ const LoginScreen = ({ navigation }) => {
 }
 
 LoginScreen.navigationOptions = {
-    title: 'Sign In'
+    title: 'Sign In',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default LoginScreen

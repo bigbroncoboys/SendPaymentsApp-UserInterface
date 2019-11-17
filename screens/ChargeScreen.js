@@ -84,7 +84,11 @@ const ChargeScreen = ({ navigation }) => {
 }
 
 ChargeScreen.navigationOptions = {
-    title: 'Charge'
+    title: 'Charge',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default ChargeScreen

@@ -53,10 +53,10 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <Container>
-            <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <H1>{businessName}</H1>
-                    <Text style={{ fontSize: 12 }}> What would you like to do?</Text>
+            <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
+                    <H1 style = {{ fontWeight: 'bold' }}>{businessName}</H1>
+                    <Text style = {{ fontSize: 20 }}>What would you like to do?</Text>
                 </View>
 
                 <View style={{ padding: 10, paddingTop: 30 }}>
