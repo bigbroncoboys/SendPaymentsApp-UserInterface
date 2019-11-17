@@ -5,9 +5,11 @@ import Divider from 'react-native-divider';
 import Dialog from 'react-native-dialog';
 
 const RegisterScreen = () => {
-    const [businessType, setBusinessType] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [businessName, setBusinessName] = React.useState('');
+    const [businessAddress, setBusinessAddress] = React.useState('');
+    const [businessType, setBusinessType] = React.useState('');
 
     const [employeeName, setEmployeeName] = React.useState('');
     const [employees, setEmployees] = React.useState([]);
@@ -68,12 +70,12 @@ const RegisterScreen = () => {
 
                     <Item inlineLabel>
                         <Label>Business Name:</Label>
-                        <Input />
+                        <Input onChangeText={text => setBusinessName(text)} value={businessName} />
                     </Item>
 
                     <Item inlineLabel>
                         <Label>Business Address:</Label>
-                        <Input />
+                        <Input onChangeText={text => setBusinessAddress(text)} value={businessAddress} />
                     </Item>
 
                     <Item inlineLabel picker>

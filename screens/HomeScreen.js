@@ -15,11 +15,15 @@ const HomeScreen = ({ navigation }) => {
         getAccountInfo();
     });
 
-    const onPressEmployees = () => {
+    const navigateSettings = () => {
+        navigation.navigate('Settings');
+    }
+
+    const navigateEmployees = () => {
         navigation.navigate('Employees');
     }
 
-    const onPressLogout = () => {
+    const logout = () => {
         navigation.dispatch(StackActions.reset({
             index: 0,
             actions: [
@@ -44,20 +48,20 @@ const HomeScreen = ({ navigation }) => {
 
                 <View style={{ flexDirection: 'row', padding: 10 }}>
                     <View style={{ flex: 1, paddingRight: 5 }}>
-                        <Button bordered onPress={onPressEmployees} style={{ justifyContent: 'center' }}>
+                        <Button bordered onPress={navigateEmployees} style={{ justifyContent: 'center' }}>
                             <Text>Employees</Text>
                         </Button>
                     </View>
 
                     <View style={{ flex: 1, paddingLeft: 5 }}>
-                        <Button bordered style={{ justifyContent: 'center' }}>
+                        <Button bordered onPress={navigateSettings} style={{ justifyContent: 'center' }}>
                             <Text>Settings</Text>
                         </Button>
                     </View>
                 </View>
 
                 <View style={{ padding: 10 }}>
-                    <Button onPress={onPressLogout} style={{ justifyContent: 'center' }}>
+                    <Button onPress={logout} style={{ justifyContent: 'center' }}>
                         <Text>Logout</Text>
                     </Button>
                 </View>

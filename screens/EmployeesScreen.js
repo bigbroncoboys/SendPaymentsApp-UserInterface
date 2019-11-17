@@ -6,20 +6,11 @@ import Dialog from 'react-native-dialog';
 const EmployeesScreen = ({ navigation }) => {
     const [employeeName, setEmployeeName] = React.useState('');
     const [employees, setEmployees] = React.useState([]);
-    const [fetchedInitial, setFetchedInitial] = React.useState(false);
     const [addEmployeeDialogVisible, setAddEmployeeDialogVisible] = React.useState(false);
 
-    React.useEffect(() => {
-        const getEmployees = () => {
-            // Going to use fetch API here
-            setEmployees(['Henry Smith']);
-        }
-
-        getEmployees();
-    }, []);
-
-    const onPressSave = () => {
+    const saveEmployees = () => {
         // Going to use fetch API here
+        navigation.goBack();
     }
 
     const addEmployee = () => {
@@ -50,6 +41,15 @@ const EmployeesScreen = ({ navigation }) => {
         setAddEmployeeDialogVisible(false);
     }
 
+    React.useEffect(() => {
+        const getInitialEmployees = () => {
+            // Going to use fetch API here
+            // Sample data
+            setEmployees(['Henry Smith']);
+        }
+
+        getInitialEmployees();
+    }, []);
 
     return (
         <Container>
@@ -82,7 +82,7 @@ const EmployeesScreen = ({ navigation }) => {
                 </View>
 
                 <View style={{ padding: 10, alignItems: 'center' }}>
-                    <Button block bordered onPress={onPressSave}>
+                    <Button block bordered onPress={saveEmployees}>
                         <Text>Save</Text>
                     </Button>
                 </View>

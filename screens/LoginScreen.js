@@ -7,25 +7,25 @@ const LoginScreen = ({ navigation }) => {
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState('');
 
-    const onPressSignIn = () => {
+    const signIn = () => {
         navigation.dispatch(StackActions.reset({
-            index: 0, // <-- currect active route from actions array
+            index: 0,
             actions: [
                 NavigationActions.navigate({ routeName: 'Home' }),
             ],
         }));
     }
 
-    const onPressSignUp = () => {
+    const navigateRegister = () => {
         navigation.navigate('Register');
+    }
+
+    const navigateCharge = () => {
+        navigation.navigate('Charge');
     }
 
     const onPressForgotPassword = () => {
         Alert.alert('You have pressed the forgot password button.');
-    }
-
-    const onPressCharge = () => {
-        navigation.navigate('Charge');
     }
 
     return (
@@ -58,14 +58,14 @@ const LoginScreen = ({ navigation }) => {
                 <View style={{ flexDirection: 'row', padding: 10 }}>
                     <View style={{ flex: 1, paddingRight: 5 }}>
                         <Button primary style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}
-                            onPress={onPressSignIn}>
+                            onPress={signIn}>
                             <Text style={{ fontWeight: 'bold' }}>Sign In</Text>
                         </Button>
                     </View>
 
                     <View style={{ flex: 1, paddingLeft: 5 }}>
                         <Button info style={{ justifyContent: 'center', backgroundColor: '#4c614c' }}
-                            onPress={onPressSignUp}>
+                            onPress={navigateRegister}>
                             <Text style={{ fontWeight: 'bold' }}>Sign Up</Text>
                         </Button>
                     </View>
@@ -80,7 +80,7 @@ const LoginScreen = ({ navigation }) => {
 
                 <View style={{ padding: 10, paddingTop: -10 }}>
                     <Button light style={{ justifyContent: 'center' }}
-                        onPress={onPressCharge}>
+                        onPress={navigateCharge}>
                         <Text>[PH]Charge Page</Text>
                     </Button>
                 </View>

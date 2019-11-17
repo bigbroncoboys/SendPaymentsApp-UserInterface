@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import ChargeScreen from '../screens/ChargeScreen';
 import CreditCardScreen from '../screens/CreditCardScreen';
 import EmployeesScreen from '../screens/EmployeesScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const AppNavigator = createStackNavigator(
     {
@@ -15,7 +16,8 @@ const AppNavigator = createStackNavigator(
         Home: HomeScreen,
         Charge: ChargeScreen,
         CreditCard: CreditCardScreen,
-        Employees: EmployeesScreen
+        Employees: EmployeesScreen,
+        Settings: SettingsScreen
     },
     {
         initialRouteName: 'Login'
