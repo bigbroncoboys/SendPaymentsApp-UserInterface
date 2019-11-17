@@ -120,7 +120,7 @@ const RegisterScreen = () => {
 
                 <View style={{ padding: 10 }}>
                     <Button primary style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
-                        <Text>Continue</Text>
+                        <Text>Register</Text>
                     </Button>
                 </View>
             </Content>

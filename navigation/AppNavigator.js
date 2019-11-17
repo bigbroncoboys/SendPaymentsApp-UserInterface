@@ -1,20 +1,20 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import HomeScreen from '../screens/HomeScreen';
+import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import ChargeScreen from '../screens/ChargeScreen';
 import CreditCardScreen from "../screens/CreditCardScreen";
 
 const AppNavigator = createStackNavigator(
     {
-        Home: HomeScreen,
+        Login: LoginScreen,
         Register: RegisterScreen,
         Charge: ChargeScreen,
         CreditCard: CreditCardScreen
     },
     {
-        initialRouteName: 'Home'
+        initialRouteName: 'Login'
     }
 );
 
