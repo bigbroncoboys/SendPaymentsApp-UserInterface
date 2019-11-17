@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, AsyncStorage } from 'react-native';
 import { Container, Content, Item, Label, Input, Button, Text, H1 } from 'native-base';
 import { StackActions, NavigationActions } from 'react-navigation';
 
@@ -7,13 +7,38 @@ const LoginScreen = ({ navigation }) => {
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState('');
 
-    const signIn = () => {
-        navigation.dispatch(StackActions.reset({
-            index: 0,
-            actions: [
-                NavigationActions.navigate({ routeName: 'Home' }),
-            ],
-        }));
+    const signIn = async () => {
+        const res = await fetch('http://149.28.76.219:3000/account/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (data.success === true) {
+            await AsyncStorage.setItem('accountID', data.accountID.toString());
+
+            navigation.dispatch(StackActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'Home' }),
+                ],
+            }));
+        } else {
+            Alert.alert(
+                'Error',
+                'Your email or password is incorrect!',
+                [
+                    {
+                        text: 'OK'
+                    }
+                ],
+                { cancelable: false },
+            );
+        }
     }
 
     const navigateRegister = () => {
@@ -48,6 +73,8 @@ const LoginScreen = ({ navigation }) => {
                     <Item inlineLabel last>
                         <Label>Password:</Label>
                         <Input
+                            secureTextEntry={true}
+                            textContentType='password'
                             keyboardAppearance='dark'
                             onChangeText={text => onChangePassword(text)}
                             value={password}

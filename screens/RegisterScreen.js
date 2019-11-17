@@ -1,10 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, ListItem, Picker, Icon } from 'native-base';
 import Divider from 'react-native-divider';
 import Dialog from 'react-native-dialog';
+import { StackActions, NavigationActions } from 'react-navigation';
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [businessName, setBusinessName] = React.useState('');
@@ -41,6 +42,34 @@ const RegisterScreen = () => {
 
     const hideAddEmployeeDialog = () => {
         setAddEmployeeDialogVisible(false);
+    }
+
+    const register = async () => {
+        await fetch('http://149.28.76.219:3000/account/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password, businessName, businessAddress, businessType, employees })
+        });
+
+        Alert.alert(
+            'Success',
+            'You have successfully registered!',
+            [
+                {
+                    text: 'OK', onPress: () => {
+                        navigation.dispatch(StackActions.reset({
+                            index: 0,
+                            actions: [
+                                NavigationActions.navigate({ routeName: 'Login' }),
+                            ],
+                        }));
+                    }
+                }
+            ],
+            { cancelable: false },
+        );
     }
 
     return (
@@ -89,10 +118,10 @@ const RegisterScreen = () => {
                             onValueChange={val => setBusinessType(val)}
                             selectedValue={businessType}
                         >
-                            <Picker.Item label='Restaurant' value='key0' />
-                            <Picker.Item label='Salon' value='key1' />
-                            <Picker.Item label='Repair Shop' value='key2' />
-                            <Picker.Item label='Convenience Store' value='key3' />
+                            <Picker.Item label='Restaurant' value='Restaurant' />
+                            <Picker.Item label='Salon' value='Salon' />
+                            <Picker.Item label='Repair Shop' value='Repair Shop' />
+                            <Picker.Item label='Convenience Store' value='Convenience Store' />
                         </Picker>
                     </Item>
                 </View>
@@ -121,7 +150,7 @@ const RegisterScreen = () => {
                 </View>
 
                 <View style={{ padding: 10 }}>
-                    <Button primary style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
+                    <Button primary onPress={register} style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
                         <Text>Register</Text>
                     </Button>
                 </View>

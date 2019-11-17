@@ -1,19 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import { Container, Content, Button, Text, H1 } from 'native-base';
 import { StackActions, NavigationActions } from 'react-navigation';
 
 const HomeScreen = ({ navigation }) => {
     const [businessName, setBusinessName] = React.useState('');
-
-    React.useEffect(() => {
-        const getAccountInfo = () => {
-            // Going to use fetch API here
-            setBusinessName("Joe's Restaurant");
-        }
-
-        getAccountInfo();
-    });
 
     const navigateCharge = () => {
         navigation.navigate('Charge');
@@ -31,10 +22,30 @@ const HomeScreen = ({ navigation }) => {
         navigation.dispatch(StackActions.reset({
             index: 0,
             actions: [
-                NavigationActions.navigate({ routeName: 'Login' }),
-            ],
+                NavigationActions.navigate({ routeName: 'Login' })
+            ]
         }));
     }
+
+    React.useEffect(() => {
+        const getAccountInfo = async () => {
+            const accountID = await AsyncStorage.getItem('accountID');
+
+            const res = await fetch(`http://149.28.76.219:3000/account/info/${accountID}`);
+            const data = await res.json();
+
+            setBusinessName(data.businessName);
+        }
+
+        getAccountInfo();
+
+        navigation.addListener(
+            'willFocus',
+            () => {
+                getAccountInfo();
+            }
+        );
+    }, []);
 
     return (
         <Container>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Alert, AsyncStorage } from 'react-native';
 import { Container, Button, Content, Text, H1, List, ListItem } from 'native-base';
 import Dialog from 'react-native-dialog';
 
@@ -8,9 +8,29 @@ const EmployeesScreen = ({ navigation }) => {
     const [employees, setEmployees] = React.useState([]);
     const [addEmployeeDialogVisible, setAddEmployeeDialogVisible] = React.useState(false);
 
-    const saveEmployees = () => {
-        // Going to use fetch API here
-        navigation.goBack();
+    const saveEmployees = async () => {
+        const accountID = await AsyncStorage.getItem('accountID');
+
+        await fetch(`http://149.28.76.219:3000/account/info/${accountID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ employees })
+        });
+
+        Alert.alert(
+            'Success',
+            'Your employees have been saved!',
+            [
+                {
+                    text: 'OK', onPress: () => {
+                        navigation.navigate('Home');
+                    }
+                }
+            ],
+            { cancelable: false },
+        );
     }
 
     const addEmployee = () => {
@@ -42,10 +62,13 @@ const EmployeesScreen = ({ navigation }) => {
     }
 
     React.useEffect(() => {
-        const getInitialEmployees = () => {
-            // Going to use fetch API here
-            // Sample data
-            setEmployees(['Henry Smith']);
+        const getInitialEmployees = async () => {
+            const accountID = await AsyncStorage.getItem('accountID');
+
+            const res = await fetch(`http://149.28.76.219:3000/account/info/${accountID}`);
+            const data = await res.json();
+
+            setEmployees(data.employees);
         }
 
         getInitialEmployees();

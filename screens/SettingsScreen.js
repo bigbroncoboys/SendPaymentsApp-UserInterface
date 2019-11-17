@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Alert, AsyncStorage } from 'react-native';
 import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, ListItem, Picker, Icon } from 'native-base';
 
 const SettingScreen = ({ navigation }) => {
@@ -7,18 +7,41 @@ const SettingScreen = ({ navigation }) => {
     const [businessAddress, setBusinessAddress] = React.useState('');
     const [businessType, setBusinessType] = React.useState('');
 
-    const saveSettings = () => {
-        // Going to use fetch API here
-        navigation.goBack();
+    const saveSettings = async () => {
+        const accountID = await AsyncStorage.getItem('accountID');
+
+        await fetch(`http://149.28.76.219:3000/account/info/${accountID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ businessName, businessAddress, businessType })
+        });
+
+        Alert.alert(
+            'Success',
+            'Your settings have been saved!',
+            [
+                {
+                    text: 'OK', onPress: () => {
+                        navigation.navigate('Home');
+                    }
+                }
+            ],
+            { cancelable: false },
+        );
     }
 
     React.useEffect(() => {
-        const getInitialAccountInfo = () => {
-            // Going to use fetch API here
-            // Sample data
-            setBusinessName("Joe's Restaurant");
-            setBusinessAddress('123 Street');
-            setBusinessType('key0');
+        const getInitialAccountInfo = async () => {
+            const accountID = await AsyncStorage.getItem('accountID');
+
+            const res = await fetch(`http://149.28.76.219:3000/account/info/${accountID}`);
+            const data = await res.json();
+
+            setBusinessName(data.businessName);
+            setBusinessAddress(data.businessAddress);
+            setBusinessType(data.businessType);
         }
 
         getInitialAccountInfo();
@@ -54,10 +77,10 @@ const SettingScreen = ({ navigation }) => {
                             onValueChange={val => setBusinessType(val)}
                             selectedValue={businessType}
                         >
-                            <Picker.Item label='Restaurant' value='key0' />
-                            <Picker.Item label='Salon' value='key1' />
-                            <Picker.Item label='Repair Shop' value='key2' />
-                            <Picker.Item label='Convenience Store' value='key3' />
+                            <Picker.Item label='Restaurant' value='Restaurant' />
+                            <Picker.Item label='Salon' value='Salon' />
+                            <Picker.Item label='Repair Shop' value='Repair Shop' />
+                            <Picker.Item label='Convenience Store' value='Convenience Store' />
                         </Picker>
                     </Item>
                 </View>
