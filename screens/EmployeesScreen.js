@@ -11,7 +11,7 @@ const EmployeesScreen = ({ navigation }) => {
     const saveEmployees = async () => {
         const accountID = await AsyncStorage.getItem('accountID');
 
-        await fetch(`http://149.28.76.219:3000/account/info/${accountID}`, {
+        await fetch(`http://149.28.76.219:3000/employees/${accountID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -65,10 +65,10 @@ const EmployeesScreen = ({ navigation }) => {
         const getInitialEmployees = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://149.28.76.219:3000/account/info/${accountID}`);
+            const res = await fetch(`http://149.28.76.219:3000/employees/${accountID}`);
             const data = await res.json();
 
-            setEmployees(data.employees);
+            setEmployees(data);
         }
 
         getInitialEmployees();

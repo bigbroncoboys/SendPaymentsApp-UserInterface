@@ -8,37 +8,44 @@ const LoginScreen = ({ navigation }) => {
     const [password, onChangePassword] = React.useState('');
 
     const signIn = async () => {
-        const res = await fetch('http://149.28.76.219:3000/account/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-        });
+        await AsyncStorage.setItem('accountID', '1');
+        navigation.dispatch(StackActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'Home' }),
+            ],
+        }));
+        // const res = await fetch('http://149.28.76.219:3000/account/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({ email, password })
+        // });
 
-        const data = await res.json();
+        // const data = await res.json();
 
-        if (data.success === true) {
-            await AsyncStorage.setItem('accountID', data.accountID.toString());
+        // if (data.success === true) {
+        //     await AsyncStorage.setItem('accountID', data.accountID.toString());
 
-            navigation.dispatch(StackActions.reset({
-                index: 0,
-                actions: [
-                    NavigationActions.navigate({ routeName: 'Home' }),
-                ],
-            }));
-        } else {
-            Alert.alert(
-                'Error',
-                'Your email or password is incorrect!',
-                [
-                    {
-                        text: 'OK'
-                    }
-                ],
-                { cancelable: false },
-            );
-        }
+        //     navigation.dispatch(StackActions.reset({
+        //         index: 0,
+        //         actions: [
+        //             NavigationActions.navigate({ routeName: 'Home' }),
+        //         ],
+        //     }));
+        // } else {
+        //     Alert.alert(
+        //         'Error',
+        //         'Your email or password is incorrect!',
+        //         [
+        //             {
+        //                 text: 'OK'
+        //             }
+        //         ],
+        //         { cancelable: false },
+        //     );
+        // }
     }
 
     const navigateRegister = () => {

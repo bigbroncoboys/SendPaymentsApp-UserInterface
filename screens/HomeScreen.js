@@ -6,8 +6,12 @@ import { StackActions, NavigationActions } from 'react-navigation';
 const HomeScreen = ({ navigation }) => {
     const [businessName, setBusinessName] = React.useState('');
 
-    const navigateCharge = () => {
-        navigation.navigate('Charge');
+    const navigateOrder = () => {
+        navigation.navigate('Order');
+    }
+
+    const navigateItems = () => {
+        navigation.navigate('Items');
     }
 
     const navigateSettings = () => {
@@ -31,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
         const getAccountInfo = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://149.28.76.219:3000/account/info/${accountID}`);
+            const res = await fetch(`http://149.28.76.219:3000/info/${accountID}`);
             const data = await res.json();
 
             setBusinessName(data.businessName);
@@ -56,8 +60,8 @@ const HomeScreen = ({ navigation }) => {
                 </View>
 
                 <View style={{ padding: 10, paddingTop: 30 }}>
-                    <Button bordered onPress={navigateCharge} style={{ justifyContent: 'center' }}>
-                        <Text>Charge</Text>
+                    <Button bordered onPress={navigateOrder} style={{ justifyContent: 'center' }}>
+                        <Text>Order</Text>
                     </Button>
                 </View>
 
@@ -69,10 +73,16 @@ const HomeScreen = ({ navigation }) => {
                     </View>
 
                     <View style={{ flex: 1, paddingLeft: 5 }}>
-                        <Button bordered onPress={navigateSettings} style={{ justifyContent: 'center' }}>
-                            <Text>Settings</Text>
+                        <Button bordered onPress={navigateItems} style={{ justifyContent: 'center' }}>
+                            <Text>Items</Text>
                         </Button>
                     </View>
+                </View>
+
+                <View style={{ padding: 10 }}>
+                    <Button bordered onPress={navigateSettings} style={{ justifyContent: 'center' }}>
+                        <Text>Settings</Text>
+                    </Button>
                 </View>
 
                 <View style={{ padding: 10 }}>

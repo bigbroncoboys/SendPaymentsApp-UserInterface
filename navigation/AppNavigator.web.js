@@ -8,6 +8,8 @@ import ChargeScreen from '../screens/ChargeScreen';
 import CreditCardScreen from '../screens/CreditCardScreen';
 import EmployeesScreen from '../screens/EmployeesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ItemsScreen from '../screens/ItemsScreen';
+import OrderScreen from '../screens/OrderScreen';
 
 const switchNavigator = createSwitchNavigator(
     // You could add another route here for authentication.
@@ -19,7 +21,9 @@ const switchNavigator = createSwitchNavigator(
         Charge: ChargeScreen,
         CreditCard: CreditCardScreen,
         Employees: EmployeesScreen,
-        Settings: SettingsScreen
+        Settings: SettingsScreen,
+        Items: ItemsScreen,
+        Order: OrderScreen
     },
     {
         initialRouteName: 'Login'
