@@ -15,6 +15,10 @@ const HomeScreen = ({ navigation }) => {
         getAccountInfo();
     });
 
+    const navigateCharge = () => {
+        navigation.navigate('Charge');
+    }
+
     const navigateSettings = () => {
         navigation.navigate('Settings');
     }
@@ -41,7 +45,7 @@ const HomeScreen = ({ navigation }) => {
                 </View>
 
                 <View style={{ padding: 10, paddingTop: 30 }}>
-                    <Button bordered style={{ justifyContent: 'center' }}>
+                    <Button bordered onPress={navigateCharge} style={{ justifyContent: 'center' }}>
                         <Text>Charge</Text>
                     </Button>
                 </View>
