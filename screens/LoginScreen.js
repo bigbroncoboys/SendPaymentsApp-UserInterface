@@ -1,13 +1,19 @@
 import React from 'react';
 import { View, Alert } from 'react-native';
 import { Container, Content, Item, Label, Input, Button, Text, H1 } from 'native-base';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 const LoginScreen = ({ navigation }) => {
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState('');
 
     const onPressSignIn = () => {
-        Alert.alert(`Email: ${email}\nPassword: ${password}`);
+        navigation.dispatch(StackActions.reset({
+            index: 0, // <-- currect active route from actions array
+            actions: [
+                NavigationActions.navigate({ routeName: 'Home' }),
+            ],
+        }));
     }
 
     const onPressSignUp = () => {
