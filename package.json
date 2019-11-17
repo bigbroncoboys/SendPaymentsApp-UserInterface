@@ -28,6 +28,7 @@
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-dialog": "^5.6.0",
     "react-native-divider": "^1.0.3",
     "react-native-easy-grid": "^0.2.2",
     "react-native-elements": "^1.2.6",
