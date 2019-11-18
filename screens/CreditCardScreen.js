@@ -68,11 +68,11 @@ const CreditCardScreen = () => {
     return (
         <Container>
             <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
-                <View style = {{ paddingTop: 0, alignItems: 'center' }}>
+                <View style = {{ alignItems: 'center' }}>
                     <H1 style = {{ fontWeight: 'bold' }}>Credit Card Information</H1>
                 </View>
 
-                <View style = {{ padding: 10, alignItems: 'center' }}>
+                <View style = {{ paddingHorizontal: 10, paddingTop: 20, alignItems: 'center' }}>
                     <Item inlineLabel>
                         <Label>Name on Card:</Label>
                         <Input
@@ -83,7 +83,7 @@ const CreditCardScreen = () => {
                     </Item>
                 </View>
 
-                <View style = {{ padding: 10, alignItems: 'center' }}>
+                <View style = {{ paddingHorizontal: 10, paddingTop: 10, alignItems: 'center' }}>
                     <Item inlineLabel>
                         <Label>Number:</Label>
                         <Input
@@ -124,7 +124,7 @@ const CreditCardScreen = () => {
                     </View>
                 </View>
 
-                <View style = {{ padding: 10, alignItems: 'center' }}>
+                <View style = {{ paddingHorizontal: 10, alignItems: 'center' }}>
                     <Item inlineLabel>
                         <Label>CVC:</Label>
                         <Input
@@ -137,7 +137,7 @@ const CreditCardScreen = () => {
                     </Item>
                 </View>
 
-                <View style = {{ padding: 10, paddingTop: 0 }}>
+                <View style = {{ padding: 10, paddingTop: 20 }}>
                     <Button primary style = {{justifyContent: 'center', backgroundColor: '#0a8508' }}
                             onPress = {onPressConfirm}>
                         <Text style = {{ fontWeight: 'bold' }}>Confirm</Text>
@@ -151,7 +151,11 @@ const CreditCardScreen = () => {
 }
 
 CreditCardScreen.navigationOptions = {
-    title: 'CreditCard'
+    title: 'Credit Card',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default CreditCardScreen

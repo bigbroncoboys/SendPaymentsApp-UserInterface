@@ -47,27 +47,27 @@ const ChargeScreen = ({ navigation }) => {
                 </View>
 
                 <View style = {{ flexDirection: 'row', padding: 10 }}>
+                    <View style = {{ flex: 1, paddingRight: 10 }}>
+                        <Button light style = {{ justifyContent: 'center' }}>
+                            <Text>$5</Text>
+                        </Button>
+                    </View>
+
                     <View style = {{ flex: 1, paddingRight: 5 }}>
-                        <Button primary style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}>
-                            <Text style = {{ fontWeight: 'bold' }}>$5</Text>
-                        </Button>
-                    </View>
-
-                    <View style = {{ flex: 1, paddingRight: 2.5 }}>
-                        <Button primary style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}>
-                            <Text style = {{ fontWeight: 'bold' }}>$10</Text>
-                        </Button>
-                    </View>
-
-                    <View style = {{ flex: 1, paddingLeft: 2.5 }}>
-                        <Button primary style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}>
-                            <Text style = {{ fontWeight: 'bold' }}>$20</Text>
+                        <Button light style = {{ justifyContent: 'center' }}>
+                            <Text>$10</Text>
                         </Button>
                     </View>
 
                     <View style = {{ flex: 1, paddingLeft: 5 }}>
-                        <Button info style = {{ justifyContent: 'center', backgroundColor: '#4c614c' }}>
-                            <Text style = {{ fontWeight: 'bold' }}>$50</Text>
+                        <Button light style = {{ justifyContent: 'center' }}>
+                            <Text>$20</Text>
+                        </Button>
+                    </View>
+
+                    <View style = {{ flex: 1, paddingLeft: 10 }}>
+                        <Button light style = {{ justifyContent: 'center' }}>
+                            <Text>$50</Text>
                         </Button>
                     </View>
                 </View>
@@ -75,6 +75,7 @@ const ChargeScreen = ({ navigation }) => {
                 <View style = {{ padding: 10, paddingTop: 0 }}>
                     <Button primary style = {{justifyContent: 'center', backgroundColor: '#0a8508' }}
                         onPress = {onPressCharge}>
+                        <Icon name = 'logo-usd'/>
                         <Text style = {{ fontWeight: 'bold' }}>Charge</Text>
                     </Button>
                 </View>

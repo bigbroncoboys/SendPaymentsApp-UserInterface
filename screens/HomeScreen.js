@@ -67,7 +67,7 @@ const HomeScreen = ({ navigation }) => {
                     </Button>
                 </View>
 
-                <View style = {{ flexDirection: 'row', paddingHorizontal: 10, paddingTop: 5 }}>
+                <View style = {{ flexDirection: 'row', padding: 10 }}>
                     <View style = {{ flex: 1, paddingRight: 5 }}>
                         <Button light style = {{ justifyContent: 'center' }}
                             onPress = {navigateEmployees}>
@@ -85,7 +85,7 @@ const HomeScreen = ({ navigation }) => {
                     </View>
                 </View>
 
-                <View style = {{ paddingHorizontal: 10, paddingTop: 5 }}>
+                <View style = {{ paddingHorizontal: 10, paddingBottom: 10 }}>
                     <Button light style = {{ justifyContent: 'center' }}
                         onPress = {navigateSettings}>
                         <Icon name = 'cog'/>
@@ -93,7 +93,7 @@ const HomeScreen = ({ navigation }) => {
                     </Button>
                 </View>
 
-                <View style = {{ padding: 10 }}>
+                <View style = {{ paddingHorizontal: 10, paddingTop: 10 }}>
                     <Button style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}
                         onPress = {logout}>
                         <Text style = {{ fontWeight: 'bold' }}>Logout</Text>
