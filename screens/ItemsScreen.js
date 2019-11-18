@@ -12,7 +12,7 @@ const ItemsScreen = ({ navigation }) => {
     const saveItems = async () => {
         const accountID = await AsyncStorage.getItem('accountID');
 
-        await fetch(`http://149.28.76.219:3000/items/${accountID}`, {
+        await fetch(`http://149.28.76.219/items/${accountID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ const ItemsScreen = ({ navigation }) => {
         const getInitialItems = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://149.28.76.219:3000/items/${accountID}`);
+            const res = await fetch(`http://149.28.76.219/items/${accountID}`);
             const data = await res.json();
 
             setItems(data);

@@ -35,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
         const getAccountInfo = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://149.28.76.219:3000/info/${accountID}`);
+            const res = await fetch(`http://149.28.76.219/info/${accountID}`);
             const data = await res.json();
 
             setBusinessName(data.businessName);

@@ -10,7 +10,7 @@ const SettingScreen = ({ navigation }) => {
     const saveSettings = async () => {
         const accountID = await AsyncStorage.getItem('accountID');
 
-        await fetch(`http://149.28.76.219:3000/info/${accountID}`, {
+        await fetch(`http://149.28.76.219/info/${accountID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ const SettingScreen = ({ navigation }) => {
         const getInitialAccountInfo = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://149.28.76.219:3000/info/${accountID}`);
+            const res = await fetch(`http://149.28.76.219/info/${accountID}`);
             const data = await res.json();
 
             setBusinessName(data.businessName);

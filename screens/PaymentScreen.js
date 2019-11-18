@@ -10,7 +10,7 @@ const PaymentScreen = ({ navigation }) => {
     const [cardCVC, setCardCVC] = React.useState('314');
 
     const processPayment = async () => {
-        const res = await fetch('http://149.28.76.219:3000/charge/process', {
+        const res = await fetch('http://149.28.76.219/charge/process', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

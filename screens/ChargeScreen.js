@@ -54,7 +54,7 @@ const ChargeScreen = ({ navigation }) => {
         const getItems = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://149.28.76.219:3000/items/${accountID}`);
+            const res = await fetch(`http://149.28.76.219/items/${accountID}`);
             const data = await res.json();
 
             const initializedItems = [];

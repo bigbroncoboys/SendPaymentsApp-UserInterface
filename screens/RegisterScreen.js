@@ -45,7 +45,7 @@ const RegisterScreen = ({ navigation }) => {
     }
 
     const register = async () => {
-        await fetch('http://149.28.76.219:3000/account/create', {
+        await fetch('http://149.28.76.219/account/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
