@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, AsyncStorage } from 'react-native';
-import { Container, Content, Button, Text, H1 } from 'native-base';
+import { Container, Content, Button, Icon, Text, H1 } from 'native-base';
 import { StackActions, NavigationActions } from 'react-navigation';
 
 const HomeScreen = ({ navigation }) => {
@@ -54,40 +54,49 @@ const HomeScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
-                <View style = {{ padding: 10, alignItems: 'center' }}>
+                <View style = {{ alignItems: 'center' }}>
                     <H1 style = {{ fontWeight: 'bold' }}>{businessName}</H1>
-                    <Text style = {{ fontSize: 20 }}>What would you like to do?</Text>
+                    <Text style = {{ fontSize: 15 }}>What would you like to do?</Text>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: 30 }}>
-                    <Button bordered onPress={navigateOrder} style={{ justifyContent: 'center' }}>
+                <View style={{ paddingHorizontal: 10, paddingTop: 20 }}>
+                    <Button light style = {{ justifyContent: 'center' }}
+                        onPress = {navigateOrder}>
+                        <Icon name = 'md-cart'/>
                         <Text>Order</Text>
                     </Button>
                 </View>
 
-                <View style={{ flexDirection: 'row', padding: 10 }}>
-                    <View style={{ flex: 1, paddingRight: 5 }}>
-                        <Button bordered onPress={navigateEmployees} style={{ justifyContent: 'center' }}>
+                <View style = {{ flexDirection: 'row', paddingHorizontal: 10, paddingTop: 5 }}>
+                    <View style = {{ flex: 1, paddingRight: 5 }}>
+                        <Button light style = {{ justifyContent: 'center' }}
+                            onPress = {navigateEmployees}>
+                            <Icon name = 'md-people'/>
                             <Text>Employees</Text>
                         </Button>
                     </View>
 
-                    <View style={{ flex: 1, paddingLeft: 5 }}>
-                        <Button bordered onPress={navigateItems} style={{ justifyContent: 'center' }}>
+                    <View style = {{ flex: 1, paddingLeft: 5 }}>
+                        <Button light style = {{ justifyContent: 'center' }}
+                            onPress = {navigateItems}>
+                            <Icon name = 'md-archive'/>
                             <Text>Items</Text>
                         </Button>
                     </View>
                 </View>
 
-                <View style={{ padding: 10 }}>
-                    <Button bordered onPress={navigateSettings} style={{ justifyContent: 'center' }}>
+                <View style = {{ paddingHorizontal: 10, paddingTop: 5 }}>
+                    <Button light style = {{ justifyContent: 'center' }}
+                        onPress = {navigateSettings}>
+                        <Icon name = 'cog'/>
                         <Text>Settings</Text>
                     </Button>
                 </View>
 
-                <View style={{ padding: 10 }}>
-                    <Button onPress={logout} style={{ justifyContent: 'center' }}>
-                        <Text>Logout</Text>
+                <View style = {{ padding: 10 }}>
+                    <Button style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}
+                        onPress = {logout}>
+                        <Text style = {{ fontWeight: 'bold' }}>Logout</Text>
                     </Button>
                 </View>
             </Content>
@@ -96,7 +105,11 @@ const HomeScreen = ({ navigation }) => {
 }
 
 HomeScreen.navigationOptions = {
-    title: 'Home'
+    title: 'Home',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default HomeScreen
