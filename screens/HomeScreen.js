@@ -6,8 +6,8 @@ import { StackActions, NavigationActions } from 'react-navigation';
 const HomeScreen = ({ navigation }) => {
     const [businessName, setBusinessName] = React.useState('');
 
-    const navigateOrder = () => {
-        navigation.navigate('Order');
+    const navigateCharge = () => {
+        navigation.navigate('Charge');
     }
 
     const navigateItems = () => {
@@ -53,50 +53,50 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <Container>
-            <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
-                <View style = {{ alignItems: 'center' }}>
-                    <H1 style = {{ fontWeight: 'bold' }}>{businessName}</H1>
-                    <Text style = {{ fontSize: 15 }}>What would you like to do?</Text>
+            <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+                <View style={{ alignItems: 'center' }}>
+                    <H1 style={{ fontWeight: 'bold' }}>{businessName}</H1>
+                    <Text style={{ fontSize: 15 }}>What would you like to do?</Text>
                 </View>
 
                 <View style={{ paddingHorizontal: 10, paddingTop: 20 }}>
-                    <Button light style = {{ justifyContent: 'center' }}
-                        onPress = {navigateOrder}>
-                        <Icon name = 'md-cart'/>
-                        <Text>Order</Text>
+                    <Button light style={{ justifyContent: 'center' }}
+                        onPress={navigateCharge}>
+                        <Icon name='md-cart' />
+                        <Text>Charge</Text>
                     </Button>
                 </View>
 
-                <View style = {{ flexDirection: 'row', padding: 10 }}>
-                    <View style = {{ flex: 1, paddingRight: 5 }}>
-                        <Button light style = {{ justifyContent: 'center' }}
-                            onPress = {navigateEmployees}>
-                            <Icon name = 'md-people'/>
+                <View style={{ flexDirection: 'row', padding: 10 }}>
+                    <View style={{ flex: 1, paddingRight: 5 }}>
+                        <Button light style={{ justifyContent: 'center' }}
+                            onPress={navigateEmployees}>
+                            <Icon name='md-people' />
                             <Text>Employees</Text>
                         </Button>
                     </View>
 
-                    <View style = {{ flex: 1, paddingLeft: 5 }}>
-                        <Button light style = {{ justifyContent: 'center' }}
-                            onPress = {navigateItems}>
-                            <Icon name = 'md-archive'/>
+                    <View style={{ flex: 1, paddingLeft: 5 }}>
+                        <Button light style={{ justifyContent: 'center' }}
+                            onPress={navigateItems}>
+                            <Icon name='md-archive' />
                             <Text>Items</Text>
                         </Button>
                     </View>
                 </View>
 
-                <View style = {{ paddingHorizontal: 10, paddingBottom: 10 }}>
-                    <Button light style = {{ justifyContent: 'center' }}
-                        onPress = {navigateSettings}>
-                        <Icon name = 'cog'/>
+                <View style={{ paddingHorizontal: 10, paddingBottom: 10 }}>
+                    <Button light style={{ justifyContent: 'center' }}
+                        onPress={navigateSettings}>
+                        <Icon name='cog' />
                         <Text>Settings</Text>
                     </Button>
                 </View>
 
-                <View style = {{ paddingHorizontal: 10, paddingTop: 10 }}>
-                    <Button style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}
-                        onPress = {logout}>
-                        <Text style = {{ fontWeight: 'bold' }}>Logout</Text>
+                <View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
+                    <Button style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}
+                        onPress={logout}>
+                        <Text style={{ fontWeight: 'bold' }}>Logout</Text>
                     </Button>
                 </View>
             </Content>

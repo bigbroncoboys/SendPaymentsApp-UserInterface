@@ -5,11 +5,10 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import HomeScreen from '../screens/HomeScreen';
 import ChargeScreen from '../screens/ChargeScreen';
-import CreditCardScreen from '../screens/CreditCardScreen';
+import PaymentScreen from '../screens/PaymentScreen';
 import EmployeesScreen from '../screens/EmployeesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ItemsScreen from '../screens/ItemsScreen';
-import OrderScreen from '../screens/OrderScreen';
 
 const AppNavigator = createStackNavigator(
     {
@@ -17,11 +16,10 @@ const AppNavigator = createStackNavigator(
         Register: RegisterScreen,
         Home: HomeScreen,
         Charge: ChargeScreen,
-        CreditCard: CreditCardScreen,
+        Payment: PaymentScreen,
         Employees: EmployeesScreen,
         Settings: SettingsScreen,
         Items: ItemsScreen,
-        Order: OrderScreen
     },
     {
         initialRouteName: 'Login'

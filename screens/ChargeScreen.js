@@ -1,82 +1,94 @@
 import React from 'react';
-import { View, Alert } from 'react-native';
-import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, ListItem, Picker, Icon } from 'native-base';
-import Divider from 'react-native-divider';
+import { View, AsyncStorage } from 'react-native';
+import { Container, Button, Content, Text, H1, List, ListItem } from 'native-base';
 
 const ChargeScreen = ({ navigation }) => {
+    const [items, setItems] = React.useState([]);
+    const [total, setTotal] = React.useState(0);
 
+    const increaseQuantity = (key) => {
+        const temp = [...items];
+        temp[key].quantity += 1;
 
-
-    const [amount, onChangeAmount] = React.useState('');
-
-    const onPressCharge = () => {
-        Alert.alert(
-            `Send $${amount}?`,
-            '',
-            [
-                {text: 'Confirm', onPress: () => navigation.navigate('CreditCard')},
-                {text: 'Cancel', onPress: () => console.log('Transaction Cancelled')},
-            ],
-        );
+        setItems(temp);
+        updateTotal();
     }
 
-    const onPressConfirm = () => {
-        navigation.navigate('CreditCard');
+    const decreaseQuantity = (key) => {
+        const temp = [...items];
+        temp[key].quantity -= 1;
+
+        setItems(temp);
+        updateTotal();
     }
+
+    const updateTotal = () => {
+        let total = 0;
+        items.forEach(item => {
+            total += item.price * item.quantity;
+        });
+
+        return setTotal(total.toFixed(2));
+    }
+
+    const listItems = () => {
+        return items.map((item, key) => {
+            return (
+                <ListItem key={key}>
+                    <Text>{item.name} - ${item.price}</Text>
+                    <View style={{ flexDirection: 'row', position: 'absolute', right: 0 }}>
+                        <Button light small onPress={() => { decreaseQuantity(key) }}><Text>&lt;</Text></Button>
+                        <Text> {item.quantity} </Text>
+                        <Button light small onPress={() => { increaseQuantity(key) }}><Text>&gt;</Text></Button>
+                    </View>
+                </ListItem>
+            )
+        })
+    }
+
+    const navigatePayment = () => {
+        navigation.navigate('Payment', { amount: total });
+    }
+
+    React.useEffect(() => {
+        const getItems = async () => {
+            const accountID = await AsyncStorage.getItem('accountID');
+
+            const res = await fetch(`http://149.28.76.219:3000/items/${accountID}`);
+            const data = await res.json();
+
+            const initializedItems = [];
+            data.forEach(item => {
+                initializedItems.push({ name: item.name, price: item.price, quantity: 0 })
+            });
+
+            setItems(initializedItems);
+        }
+
+        getItems();
+    }, []);
 
     return (
         <Container>
-            <Content>
-                <View style = {{ paddingTop: 200, alignItems: 'center' }}>
-                    <H1 style = {{ fontWeight: 'bold' }}>Start sending cash!</H1>
+            <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+                <View style={{ padding: 10, alignItems: 'center' }}>
+                    <H1 style={{ fontWeight: 'bold' }}>Charge</H1>
+                    <Text style={{ fontSize: 15 }}> Add items to charge.</Text>
                 </View>
 
-                <View style = {{ padding: 50, paddingTop: 25, alignItems: 'center' }}>
-                    <Item inlineLabel>
-                        <Label>Amount: $</Label>
-                        <Input
-                            type = "number"
-                            keyboardType = 'decimal-pad'
-                            keyboardAppearance = 'dark'
-                            placeholder = '00.00'
-                            maxLength = {6}
-                            onChangeText = {text => onChangeAmount(text)}
-                            value = {amount}
-                        />
-                    </Item>
+                <View style={{ padding: 10 }}>
+                    <List>
+                        {listItems()}
+                    </List>
                 </View>
 
-                <View style = {{ flexDirection: 'row', padding: 10 }}>
-                    <View style = {{ flex: 1, paddingRight: 10 }}>
-                        <Button light style = {{ justifyContent: 'center' }}>
-                            <Text>$5</Text>
-                        </Button>
-                    </View>
-
-                    <View style = {{ flex: 1, paddingRight: 5 }}>
-                        <Button light style = {{ justifyContent: 'center' }}>
-                            <Text>$10</Text>
-                        </Button>
-                    </View>
-
-                    <View style = {{ flex: 1, paddingLeft: 5 }}>
-                        <Button light style = {{ justifyContent: 'center' }}>
-                            <Text>$20</Text>
-                        </Button>
-                    </View>
-
-                    <View style = {{ flex: 1, paddingLeft: 10 }}>
-                        <Button light style = {{ justifyContent: 'center' }}>
-                            <Text>$50</Text>
-                        </Button>
-                    </View>
+                <View style={{ padding: 10, paddingTop: 0, alignItems: 'center' }}>
+                    <Text style={{ fontSize: 20 }}> Total: ${total}</Text>
                 </View>
 
-                <View style = {{ padding: 10, paddingTop: 0 }}>
-                    <Button primary style = {{justifyContent: 'center', backgroundColor: '#0a8508' }}
-                        onPress = {onPressCharge}>
-                        <Icon name = 'logo-usd'/>
-                        <Text style = {{ fontWeight: 'bold' }}>Charge</Text>
+                <View style={{ padding: 10, paddingTop: 0 }}>
+                    <Button onPress={navigatePayment} style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
+                        <Text style={{ fontWeight: 'bold' }}>Proceed to Payment</Text>
                     </Button>
                 </View>
             </Content>
