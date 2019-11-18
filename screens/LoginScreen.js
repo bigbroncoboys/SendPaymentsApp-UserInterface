@@ -8,7 +8,7 @@ const LoginScreen = ({ navigation }) => {
     const [password, onChangePassword] = React.useState('');
 
     const signIn = async () => {
-        const res = await fetch('http://149.28.76.219/account/login', {
+        const res = await fetch('http://sendmoney.dev/account/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

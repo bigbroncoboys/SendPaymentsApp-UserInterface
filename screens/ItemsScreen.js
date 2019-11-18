@@ -12,7 +12,7 @@ const ItemsScreen = ({ navigation }) => {
     const saveItems = async () => {
         const accountID = await AsyncStorage.getItem('accountID');
 
-        await fetch(`http://149.28.76.219/items/${accountID}`, {
+        await fetch(`http://sendmoney.dev/items/${accountID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ const ItemsScreen = ({ navigation }) => {
         const getInitialItems = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://149.28.76.219/items/${accountID}`);
+            const res = await fetch(`http://sendmoney.dev/items/${accountID}`);
             const data = await res.json();
 
             setItems(data);
@@ -79,35 +79,35 @@ const ItemsScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style = {{ padding: 10, alignItems: 'center' }}>
-                    <H1 style = {{ fontWeight: 'bold' }}>Items</H1>
-                    <Text style = {{ fontSize: 15 }}>Add or remove items.</Text>
+                <View style={{ padding: 10, alignItems: 'center' }}>
+                    <H1 style={{ fontWeight: 'bold' }}>Items</H1>
+                    <Text style={{ fontSize: 15 }}>Add or remove items.</Text>
                 </View>
 
-                <View style = {{ padding: 10 }}>
+                <View style={{ padding: 10 }}>
                     <List>
                         {listItems()}
                     </List>
                 </View>
 
-                <View style = {{ padding: 10, alignItems: 'center' }}>
-                    <Button light onPress = {showAddItemDialog}>
+                <View style={{ padding: 10, alignItems: 'center' }}>
+                    <Button light onPress={showAddItemDialog}>
                         <Text>Add New Item</Text>
                     </Button>
 
                     <Dialog.Container visible={addItemDialogVisible}>
                         <Dialog.Title>Add an Item</Dialog.Title>
-                        <Dialog.Input label='Item Name' onChangeText = {text => setItemName(text)} value={itemName} />
-                        <Dialog.Input label='Item Price (Ex: 6.99)' onChangeText = {text => setItemPrice(text)} value={itemPrice} />
-                        <Dialog.Button label='Add' onPress = {addItem} />
-                        <Dialog.Button label='Cancel' onPress = {hideAddItemDialog} />
+                        <Dialog.Input label='Item Name' onChangeText={text => setItemName(text)} value={itemName} />
+                        <Dialog.Input label='Item Price (Ex: 6.99)' onChangeText={text => setItemPrice(text)} value={itemPrice} />
+                        <Dialog.Button label='Add' onPress={addItem} />
+                        <Dialog.Button label='Cancel' onPress={hideAddItemDialog} />
                     </Dialog.Container>
                 </View>
 
-                <View style = {{ padding: 10 }}>
-                    <Button primary style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}
-                        onPress = {saveItems}>
-                        <Text style = {{ fontWeight: 'bold' }}>Save</Text>
+                <View style={{ padding: 10 }}>
+                    <Button primary style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}
+                        onPress={saveItems}>
+                        <Text style={{ fontWeight: 'bold' }}>Save</Text>
                     </Button>
                 </View>
             </Content>

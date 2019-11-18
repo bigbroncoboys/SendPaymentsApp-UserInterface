@@ -45,7 +45,7 @@ const RegisterScreen = ({ navigation }) => {
     }
 
     const register = async () => {
-        await fetch('http://149.28.76.219/account/create', {
+        await fetch('http://sendmoney.dev/account/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const RegisterScreen = ({ navigation }) => {
         <Container>
             <Content>
                 <View style={{ alignItems: 'center', paddingTop: 30 }}>
-                    <H1 style = {{ fontWeight: 'bold' }}>Welcome to Send!</H1>
+                    <H1 style={{ fontWeight: 'bold' }}>Welcome to Send!</H1>
                     <Text style={{ fontSize: 15 }}>Please describe your business.</Text>
                 </View>
 
@@ -151,7 +151,7 @@ const RegisterScreen = ({ navigation }) => {
 
                 <View style={{ padding: 10 }}>
                     <Button primary onPress={register} style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
-                        <Text style = {{ fontWeight: 'bold' }}>Register</Text>
+                        <Text style={{ fontWeight: 'bold' }}>Register</Text>
                     </Button>
                 </View>
             </Content>
