@@ -35,6 +35,41 @@ const CreditCardScreen = () => {
         }
     }
 
+    var items = {
+        name: 'Hot Dog',
+        description:'',
+        images: '',
+        amount: 500,
+        currency:'usd',
+        quantity: 1,
+    }
+
+    async function onPressConfirm(){
+        const response = await fetch('http://60776f40.ngrok.io' + '/checkout', {
+            method: 'POST',
+            body: JSON.stringify(items),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const result = await response;
+        console.log(result);
+        /*
+        stripe.redirectToCheckout({
+            // Make the id field from the Checkout Session creation API response
+            // available to this file, so you can provide it as parameter here
+            // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+            sessionId: '{{CHECKOUT_SESSION_ID}}'
+        }).then(function (result) {
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer
+            // using `result.error.message`.
+        });
+
+         */
+    }
+
+    /*
     async function onPressConfirm() {
         var card = await stripe.createToken(testInfo);
         var token = card.id;
@@ -48,7 +83,7 @@ const CreditCardScreen = () => {
         };
 
         try {
-            const response = await fetch('http://fe89c387.ngrok.io' +
+            const response = await fetch('http://178e4333.ngrok.io' +
                 '', {
                 method: 'POST',
                 body: JSON.stringify(formData),
@@ -65,6 +100,8 @@ const CreditCardScreen = () => {
 
     }
 
+
+     */
     return (
         <Container>
             <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
