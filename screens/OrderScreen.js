@@ -78,7 +78,7 @@ const OrderScreen = ({ navigation }) => {
                     </List>
                 </View>
 
-                <View style = {{ padding: 10, alignItems: 'center' }}>
+                <View style = {{ padding: 10, paddingTop: 0, alignItems: 'center' }}>
                     <Text style = {{ fontSize: 20 }}> Total: ${total}</Text>
                 </View>
 
