@@ -49,7 +49,7 @@ const ItemsScreen = ({ navigation }) => {
             return (
                 <ListItem key={key}>
                     <Text>{item.name} - ${item.price}</Text>
-                    <Button onPress={() => { removeItem(key) }} bordered small style={{ position: 'absolute', right: 0 }}><Text>X</Text></Button>
+                    <Button onPress={() => { removeItem(key) }} light small style={{ position: 'absolute', right: 0 }}><Text>X</Text></Button>
                 </ListItem>
             )
         })
@@ -79,34 +79,35 @@ const ItemsScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <H1>Items</H1>
-                    <Text style={{ fontSize: 12 }}> Add or remove items.</Text>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
+                    <H1 style = {{ fontWeight: 'bold' }}>Items</H1>
+                    <Text style = {{ fontSize: 15 }}>Add or remove items.</Text>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: 30 }}>
+                <View style = {{ padding: 10 }}>
                     <List>
                         {listItems()}
                     </List>
                 </View>
 
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <Button block bordered onPress={showAddItemDialog}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
+                    <Button light onPress = {showAddItemDialog}>
                         <Text>Add New Item</Text>
                     </Button>
 
                     <Dialog.Container visible={addItemDialogVisible}>
                         <Dialog.Title>Add an Item</Dialog.Title>
-                        <Dialog.Input label='Item Name' onChangeText={text => setItemName(text)} value={itemName} />
-                        <Dialog.Input label='Item Price (Ex: 6.99)' onChangeText={text => setItemPrice(text)} value={itemPrice} />
-                        <Dialog.Button label='Add' onPress={addItem} />
-                        <Dialog.Button label='Cancel' onPress={hideAddItemDialog} />
+                        <Dialog.Input label='Item Name' onChangeText = {text => setItemName(text)} value={itemName} />
+                        <Dialog.Input label='Item Price (Ex: 6.99)' onChangeText = {text => setItemPrice(text)} value={itemPrice} />
+                        <Dialog.Button label='Add' onPress = {addItem} />
+                        <Dialog.Button label='Cancel' onPress = {hideAddItemDialog} />
                     </Dialog.Container>
                 </View>
 
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <Button block bordered onPress={saveItems}>
-                        <Text>Save</Text>
+                <View style = {{ padding: 10 }}>
+                    <Button primary style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}
+                        onPress = {saveItems}>
+                        <Text style = {{ fontWeight: 'bold' }}>Save</Text>
                     </Button>
                 </View>
             </Content>
@@ -115,7 +116,11 @@ const ItemsScreen = ({ navigation }) => {
 }
 
 ItemsScreen.navigationOptions = {
-    title: 'Items'
+    title: 'Items',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default ItemsScreen

@@ -49,45 +49,46 @@ const SettingScreen = ({ navigation }) => {
 
     return (
         <Container>
-            <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <H1>Settings</H1>
-                    <Text style={{ fontSize: 12 }}> Change your account settings here.</Text>
+            <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
+                    <H1 style = {{ fontWeight: 'bold' }}>Settings</H1>
+                    <Text style = {{ fontSize: 15 }}> Change your account settings here.</Text>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: 30 }}>
+                <View style = {{ padding: 10 }}>
                     <Item inlineLabel>
                         <Label>Business Name:</Label>
-                        <Input onChangeText={text => setBusinessName(text)} value={businessName} />
+                        <Input onChangeText = {text => setBusinessName(text)} value = {businessName} />
                     </Item>
 
                     <Item inlineLabel>
                         <Label>Business Address:</Label>
-                        <Input onChangeText={text => setBusinessAddress(text)} value={businessAddress} />
+                        <Input onChangeText = {text => setBusinessAddress(text)} value = {businessAddress} />
                     </Item>
 
                     <Item inlineLabel picker>
                         <Label>Type of Business:</Label>
                         <Picker
-                            mode='dropdown'
-                            iosIcon={<Icon name='arrow-down' />}
-                            placeholder='Select Type'
-                            placeholderStyle={{ color: '#bfc6ea' }}
-                            placeholderIconColor='#007aff'
+                            mode = 'dropdown'
+                            iosIcon = {<Icon name='arrow-down' />}
+                            placeholder = 'Select Type'
+                            placeholderStyle = {{ color: '#bfc6ea' }}
+                            placeholderIconColor = '#007aff'
                             onValueChange={val => setBusinessType(val)}
-                            selectedValue={businessType}
+                            selectedValue = {businessType}
                         >
-                            <Picker.Item label='Restaurant' value='Restaurant' />
-                            <Picker.Item label='Salon' value='Salon' />
-                            <Picker.Item label='Repair Shop' value='Repair Shop' />
-                            <Picker.Item label='Convenience Store' value='Convenience Store' />
+                            <Picker.Item label = 'Restaurant' value='Restaurant' />
+                            <Picker.Item label = 'Salon' value='Salon' />
+                            <Picker.Item label = 'Repair Shop' value='Repair Shop' />
+                            <Picker.Item label = 'Convenience Store' value='Convenience Store' />
                         </Picker>
                     </Item>
                 </View>
 
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <Button block bordered onPress={saveSettings}>
-                        <Text>Save</Text>
+                <View style = {{ padding: 10 }}>
+                    <Button primary style = {{ justifyContent: 'center', backgroundColor: '#0a8508'}}
+                        onPress = {saveSettings}>
+                        <Text style = {{ fontWeight: 'bold' }}>Save</Text>
                     </Button>
                 </View>
             </Content>
@@ -96,7 +97,11 @@ const SettingScreen = ({ navigation }) => {
 }
 
 SettingScreen.navigationOptions = {
-    title: 'Settings'
+    title: 'Settings',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default SettingScreen

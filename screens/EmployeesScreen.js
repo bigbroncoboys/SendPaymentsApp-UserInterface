@@ -47,7 +47,7 @@ const EmployeesScreen = ({ navigation }) => {
             return (
                 <ListItem key={key}>
                     <Text>{employee}</Text>
-                    <Button onPress={() => { removeEmployee(key) }} bordered small style={{ position: 'absolute', right: 0 }}><Text>X</Text></Button>
+                    <Button onPress={() => { removeEmployee(key) }} light small style={{ position: 'absolute', right: 0 }}><Text>X</Text></Button>
                 </ListItem>
             )
         })
@@ -76,20 +76,20 @@ const EmployeesScreen = ({ navigation }) => {
 
     return (
         <Container>
-            <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <H1>Employees</H1>
-                    <Text style={{ fontSize: 12 }}> Add or remove employees.</Text>
+            <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
+                    <H1 style = {{ fontWeight: 'bold' }}>Employees</H1>
+                    <Text style = {{ fontSize: 15 }}> Add or remove employees.</Text>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: 30 }}>
+                <View style = {{ padding: 10 }}>
                     <List>
                         {listEmployees()}
                     </List>
                 </View>
 
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <Button block bordered onPress={showAddEmployeeDialog}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
+                    <Button light onPress = {showAddEmployeeDialog}>
                         <Text>Add New Employee</Text>
                     </Button>
 
@@ -98,15 +98,16 @@ const EmployeesScreen = ({ navigation }) => {
                         <Dialog.Description>
                             Please enter the employee's name.
                         </Dialog.Description>
-                        <Dialog.Input onChangeText={text => setEmployeeName(text)} value={employeeName} />
-                        <Dialog.Button label='Add' onPress={addEmployee} />
-                        <Dialog.Button label='Cancel' onPress={hideAddEmployeeDialog} />
+                        <Dialog.Input onChangeText = {text => setEmployeeName(text)} value={employeeName} />
+                        <Dialog.Button label='Add' onPress = {addEmployee} />
+                        <Dialog.Button label='Cancel' onPress = {hideAddEmployeeDialog} />
                     </Dialog.Container>
                 </View>
 
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <Button block bordered onPress={saveEmployees}>
-                        <Text>Save</Text>
+                <View style = {{ padding: 10 }}>
+                    <Button primary style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}
+                        onPress = {saveEmployees}>
+                        <Text style = {{ fontWeight: 'bold' }}>Save</Text>
                     </Button>
                 </View>
             </Content>
@@ -115,7 +116,11 @@ const EmployeesScreen = ({ navigation }) => {
 }
 
 EmployeesScreen.navigationOptions = {
-    title: 'Employees'
+    title: 'Employees',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default EmployeesScreen

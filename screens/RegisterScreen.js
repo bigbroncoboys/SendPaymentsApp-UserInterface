@@ -76,8 +76,8 @@ const RegisterScreen = ({ navigation }) => {
         <Container>
             <Content>
                 <View style={{ alignItems: 'center', paddingTop: 30 }}>
-                    <H1>Welcome to the POS!</H1>
-                    <Text style={{ fontSize: 12 }}>Please describe your business.</Text>
+                    <H1 style = {{ fontWeight: 'bold' }}>Welcome to Send!</H1>
+                    <Text style={{ fontSize: 15 }}>Please describe your business.</Text>
                 </View>
 
                 <View style={{ padding: 10, paddingTop: 30 }}>
@@ -134,7 +134,7 @@ const RegisterScreen = ({ navigation }) => {
                 </View>
 
                 <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'flex-end' }}>
-                    <Button info onPress={showAddEmployeeDialog} style={{ backgroundColor: '#4c614c' }}>
+                    <Button light onPress={showAddEmployeeDialog}>
                         <Text>Add New Employee</Text>
                     </Button>
 
@@ -151,7 +151,7 @@ const RegisterScreen = ({ navigation }) => {
 
                 <View style={{ padding: 10 }}>
                     <Button primary onPress={register} style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
-                        <Text>Register</Text>
+                        <Text style = {{ fontWeight: 'bold' }}>Register</Text>
                     </Button>
                 </View>
             </Content>
@@ -160,7 +160,11 @@ const RegisterScreen = ({ navigation }) => {
 }
 
 RegisterScreen.navigationOptions = {
-    title: 'Register'
+    title: 'Register',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default RegisterScreen

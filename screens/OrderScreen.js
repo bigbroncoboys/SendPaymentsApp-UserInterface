@@ -34,12 +34,12 @@ const OrderScreen = ({ navigation }) => {
     const listItems = () => {
         return items.map((item, key) => {
             return (
-                <ListItem key={key}>
+                <ListItem key = {key}>
                     <Text>{item.name} - ${item.price}</Text>
-                    <View style={{ flexDirection: 'row', position: 'absolute', right: 0 }}>
-                        <Button bordered small onPress={() => { decreaseQuantity(key) }}><Text>&lt;</Text></Button>
+                    <View style = {{ flexDirection: 'row', position: 'absolute', right: 0 }}>
+                        <Button light small onPress = {() => { decreaseQuantity(key) }}><Text>&lt;</Text></Button>
                         <Text> {item.quantity} </Text>
-                        <Button bordered small onPress={() => { increaseQuantity(key) }}><Text>&gt;</Text></Button>
+                        <Button light small onPress = {() => { increaseQuantity(key) }}><Text>&gt;</Text></Button>
                     </View>
                 </ListItem>
             )
@@ -66,25 +66,25 @@ const OrderScreen = ({ navigation }) => {
 
     return (
         <Container>
-            <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <H1>Order</H1>
-                    <Text style={{ fontSize: 12 }}> Add items to checkout.</Text>
+            <Content contentContainerStyle = {{ justifyContent: 'center', flex: 1 }}>
+                <View style = {{ padding: 10, alignItems: 'center' }}>
+                    <H1 style = {{ fontWeight: 'bold' }}>Order</H1>
+                    <Text style = {{ fontSize: 15 }}> Add items to checkout.</Text>
                 </View>
 
-                <View style={{ padding: 10, paddingTop: 30 }}>
+                <View style = {{ padding: 10 }}>
                     <List>
                         {listItems()}
                     </List>
                 </View>
 
-                <View style={{ padding: 10, alignItems: 'center' }}>
-                    <Text style={{ fontSize: 12 }}> Total: ${total}</Text>
+                <View style = {{ padding: 10, paddingTop: 0, alignItems: 'center' }}>
+                    <Text style = {{ fontSize: 20 }}> Total: ${total}</Text>
                 </View>
 
-                <View style={{ padding: 10 }}>
-                    <Button style={{ justifyContent: 'center' }}>
-                        <Text>Checkout</Text>
+                <View style = {{ padding: 10, paddingTop: 0 }}>
+                    <Button style = {{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
+                        <Text style = {{ fontWeight: 'bold' }}>Checkout</Text>
                     </Button>
                 </View>
             </Content>
@@ -93,7 +93,11 @@ const OrderScreen = ({ navigation }) => {
 }
 
 OrderScreen.navigationOptions = {
-    title: 'Order'
+    title: 'Order',
+    headerStyle: {
+        backgroundColor: '#0a8508'
+    },
+    headerTintColor: '#ffffff',
 };
 
 export default OrderScreen
