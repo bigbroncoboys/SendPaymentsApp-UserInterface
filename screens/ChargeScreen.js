@@ -50,6 +50,10 @@ const ChargeScreen = ({ navigation }) => {
         navigation.navigate('Payment', { amount: total });
     }
 
+    const navigateQRCode = () => {
+        navigation.navigate('QRCode', );
+    }
+
     React.useEffect(() => {
         const getItems = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
@@ -89,6 +93,12 @@ const ChargeScreen = ({ navigation }) => {
                 <View style={{ padding: 10, paddingTop: 0 }}>
                     <Button onPress={navigatePayment} style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
                         <Text style={{ fontWeight: 'bold' }}>Proceed to Payment</Text>
+                    </Button>
+                </View>
+
+                <View style={{ padding: 10, paddingTop: 0 }}>
+                    <Button onPress={navigateQRCode} style={{ justifyContent: 'center', backgroundColor: '#0a8508' }}>
+                        <Text style={{ fontWeight: 'bold' }}>Proceed to PaymentQRCode</Text>
                     </Button>
                 </View>
             </Content>

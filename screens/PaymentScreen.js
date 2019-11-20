@@ -3,6 +3,7 @@ import { View, Alert } from 'react-native';
 
 import { Container, Button, Content, Text, H1, H3, Item, Input, Label } from 'native-base';
 
+
 const PaymentScreen = ({ navigation }) => {
     const [cardNumber, setCardNumber] = React.useState('4242424242424242');
     const [cardExpMonth, setCardExpMonth] = React.useState('11');
@@ -50,6 +51,7 @@ const PaymentScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+
                 <View style={{ alignItems: 'center' }}>
                     <H1 style={{ fontWeight: 'bold' }}>Card Information</H1>
                 </View>
