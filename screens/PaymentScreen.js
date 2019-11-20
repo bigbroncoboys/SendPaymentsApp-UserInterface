@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Alert } from 'react-native';
-import { Container, Button, Content, Text, H1, H3, Item, Input, Label, Spinner } from 'native-base';
+import { Container, Content, Text, H1, Spinner } from 'native-base';
 import QRCode from 'react-native-qrcode-svg';
+import { Linking } from 'expo';
 
 const PaymentScreen = ({ navigation }) => {
     const [sessionID, setSessionID] = React.useState('');
@@ -69,16 +70,19 @@ const PaymentScreen = ({ navigation }) => {
                     <Spinner color='#0a8508' />
                     <Text style={{ fontSize: 15 }}>Waiting for payment to be received...</Text>
                 </View>
+                {
+                    sessionID !== '' &&
+                    (
+                        <View style={{ paddingTop: 20, alignItems: 'center' }}>
+                            <QRCode
+                                value={`http://sendmoney.dev/payment?session_id=${sessionID}`}
+                                size={300}
+                            />
 
-                <View style={{ paddingHorizontal: 10, paddingTop: 20, alignItems: 'center' }}>
-                    {
-                        sessionID !== '' &&
-                        <QRCode
-                            value={`http://sendmoney.dev/payment?session_id=${sessionID}`}
-                            size={300}
-                        />
-                    }
-                </View>
+                            <Text style={{ padding: 10, fontSize: 11, color: 'grey' }} onPress={() => Linking.openURL(`http://sendmoney.dev/payment?session_id=${sessionID}`)}>Click here to open payment page.</Text>
+                        </View>
+                    )
+                }
             </Content>
         </Container>
     );

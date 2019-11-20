@@ -45,10 +45,6 @@ const LoginScreen = ({ navigation }) => {
         navigation.navigate('Register');
     }
 
-    const navigateCharge = () => {
-        navigation.navigate('Charge');
-    }
-
     const onPressForgotPassword = () => {
         Alert.alert('You have pressed the forgot password button.');
     }
