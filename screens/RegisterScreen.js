@@ -45,7 +45,7 @@ const RegisterScreen = ({ navigation }) => {
     }
 
     const register = async () => {
-        await fetch('http://sendmoney.dev/account/create', {
+        await fetch('http://sendmoney.dev/api/account/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -9,7 +9,6 @@ import PaymentScreen from '../screens/PaymentScreen';
 import EmployeesScreen from '../screens/EmployeesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ItemsScreen from '../screens/ItemsScreen';
-import QRCodeScreen from "../screens/QRCodeScreen";
 
 const switchNavigator = createSwitchNavigator(
     // You could add another route here for authentication.
@@ -23,7 +22,6 @@ const switchNavigator = createSwitchNavigator(
         Employees: EmployeesScreen,
         Settings: SettingsScreen,
         Items: ItemsScreen,
-        QRCode: QRCodeScreen,
     },
     {
         initialRouteName: 'Login'

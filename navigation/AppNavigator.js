@@ -9,7 +9,6 @@ import PaymentScreen from '../screens/PaymentScreen';
 import EmployeesScreen from '../screens/EmployeesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ItemsScreen from '../screens/ItemsScreen';
-import QRCodeScreen from "../screens/QRCodeScreen";
 
 const AppNavigator = createStackNavigator(
     {
@@ -21,7 +20,6 @@ const AppNavigator = createStackNavigator(
         Employees: EmployeesScreen,
         Settings: SettingsScreen,
         Items: ItemsScreen,
-        QRCode: QRCodeScreen,
     },
     {
         initialRouteName: 'Login'

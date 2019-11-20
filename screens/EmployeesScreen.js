@@ -11,7 +11,7 @@ const EmployeesScreen = ({ navigation }) => {
     const saveEmployees = async () => {
         const accountID = await AsyncStorage.getItem('accountID');
 
-        await fetch(`http://sendmoney.dev/employees/${accountID}`, {
+        await fetch(`http://sendmoney.dev/api/employees/${accountID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ const EmployeesScreen = ({ navigation }) => {
         const getInitialEmployees = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://sendmoney.dev/employees/${accountID}`);
+            const res = await fetch(`http://sendmoney.dev/api/employees/${accountID}`);
             const data = await res.json();
 
             setEmployees(data);

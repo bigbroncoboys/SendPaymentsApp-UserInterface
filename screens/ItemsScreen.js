@@ -12,7 +12,7 @@ const ItemsScreen = ({ navigation }) => {
     const saveItems = async () => {
         const accountID = await AsyncStorage.getItem('accountID');
 
-        await fetch(`http://sendmoney.dev/items/${accountID}`, {
+        await fetch(`http://sendmoney.dev/api/items/${accountID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ const ItemsScreen = ({ navigation }) => {
         const getInitialItems = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://sendmoney.dev/items/${accountID}`);
+            const res = await fetch(`http://sendmoney.dev/api/items/${accountID}`);
             const data = await res.json();
 
             setItems(data);
