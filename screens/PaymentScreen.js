@@ -17,7 +17,7 @@ const PaymentScreen = ({ navigation }) => {
                 }
             }
 
-            const res = await fetch('http://sendmoney.dev/api/charge/createCheckout', {
+            const res = await fetch('https://sendmoney.dev/api/charge/createCheckout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ const PaymentScreen = ({ navigation }) => {
 
     React.useEffect(() => {
         const checkForPayment = setInterval(async () => {
-            const res = await fetch(`http://sendmoney.dev/api/charge/checkPayment?session_id=${sessionID}`);
+            const res = await fetch(`https://sendmoney.dev/api/charge/checkPayment?session_id=${sessionID}`);
             const data = await res.json();
 
             if (data.processed) {
@@ -75,11 +75,11 @@ const PaymentScreen = ({ navigation }) => {
                     (
                         <View style={{ paddingTop: 20, alignItems: 'center' }}>
                             <QRCode
-                                value={`http://sendmoney.dev/payment?session_id=${sessionID}`}
+                                value={`https://sendmoney.dev/payment?session_id=${sessionID}`}
                                 size={300}
                             />
 
-                            <Text style={{ padding: 10, fontSize: 11, color: 'grey' }} onPress={() => Linking.openURL(`http://sendmoney.dev/payment?session_id=${sessionID}`)}>Click here to open payment page.</Text>
+                            <Text style={{ padding: 10, fontSize: 11, color: 'grey' }} onPress={() => Linking.openURL(`https://sendmoney.dev/payment?session_id=${sessionID}`)}>Click here to open payment page.</Text>
                         </View>
                     )
                 }

@@ -45,7 +45,7 @@ const RegisterScreen = ({ navigation }) => {
     }
 
     const register = async () => {
-        await fetch('http://sendmoney.dev/api/account/create', {
+        await fetch('https://sendmoney.dev/api/account/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -90,7 +90,11 @@ const RegisterScreen = ({ navigation }) => {
 
                     <Item inlineLabel last>
                         <Label>Password:</Label>
-                        <Input onChangeText={text => setPassword(text)} value={password} />
+                        <Input secureTextEntry={true}
+                            textContentType='password'
+                            onChangeText={text => setPassword(text)}
+                            value={password}
+                        />
                     </Item>
                 </View>
 

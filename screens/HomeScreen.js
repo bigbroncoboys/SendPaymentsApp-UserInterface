@@ -35,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
         const getAccountInfo = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://sendmoney.dev/api/info/${accountID}`);
+            const res = await fetch(`https://sendmoney.dev/api/info/${accountID}`);
             const data = await res.json();
 
             setBusinessName(data.businessName);

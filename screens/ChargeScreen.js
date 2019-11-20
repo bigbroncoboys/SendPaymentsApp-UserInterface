@@ -54,7 +54,7 @@ const ChargeScreen = ({ navigation }) => {
         const getItems = async () => {
             const accountID = await AsyncStorage.getItem('accountID');
 
-            const res = await fetch(`http://sendmoney.dev/api/items/${accountID}`);
+            const res = await fetch(`https://sendmoney.dev/api/items/${accountID}`);
             const data = await res.json();
 
             const initializedItems = [];
