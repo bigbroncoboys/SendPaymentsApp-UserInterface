@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, StatusBar } from 'react-native';
 import { Container, Content, Text, H1, Spinner } from 'native-base';
 import QRCode from 'react-native-qrcode-svg';
 import { Linking } from 'expo';
@@ -65,6 +65,7 @@ const PaymentScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+                <StatusBar backgroundColor = '#ffffff' barStyle = 'dark-content' />
                 <View style={{ alignItems: 'center' }}>
                     <H1 style={{ fontWeight: 'bold' }}>Payment</H1>
                     <Spinner color='#0a8508' />
@@ -91,9 +92,12 @@ const PaymentScreen = ({ navigation }) => {
 PaymentScreen.navigationOptions = {
     title: 'Payment',
     headerStyle: {
-        backgroundColor: '#0a8508'
+        backgroundColor: '#ffffff',
+        borderBottomWidth: 0,
+        elevation: 0,
+        shadowOpacity: 0
     },
-    headerTintColor: '#ffffff',
+    headerTintColor: '#000000',
 };
 
 export default PaymentScreen

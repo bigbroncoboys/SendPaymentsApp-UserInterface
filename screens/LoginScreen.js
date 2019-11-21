@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, AsyncStorage } from 'react-native';
+import { View, Alert, AsyncStorage, StatusBar } from 'react-native';
 import { Container, Content, Item, Label, Input, Button, Icon, Text, H1 } from 'native-base';
 import { StackActions, NavigationActions } from 'react-navigation';
 
@@ -52,6 +52,7 @@ const LoginScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+                <StatusBar backgroundColor = '#ffffff' barStyle = 'dark-content' />
                 <View style={{ padding: 10, alignItems: 'center' }}>
                     <H1 style={{ fontWeight: 'bold' }}>Account Credentials</H1>
                 </View>
@@ -60,7 +61,6 @@ const LoginScreen = ({ navigation }) => {
                     <Item inlineLabel>
                         <Label>Email:</Label>
                         <Input
-                            keyboardAppearance='dark'
                             onChangeText={text => onChangeEmail(text)}
                             value={email}
                         />
@@ -71,7 +71,6 @@ const LoginScreen = ({ navigation }) => {
                         <Input
                             secureTextEntry={true}
                             textContentType='password'
-                            keyboardAppearance='dark'
                             onChangeText={text => onChangePassword(text)}
                             value={password}
                         />
@@ -110,9 +109,12 @@ const LoginScreen = ({ navigation }) => {
 LoginScreen.navigationOptions = {
     title: 'Sign In',
     headerStyle: {
-        backgroundColor: '#0a8508'
+        backgroundColor: '#ffffff',
+        borderBottomWidth: 0,
+        elevation: 0,
+        shadowOpacity: 0
     },
-    headerTintColor: '#ffffff',
+    headerTintColor: '#000000',
 };
 
 export default LoginScreen

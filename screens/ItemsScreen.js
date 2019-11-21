@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, AsyncStorage } from 'react-native';
+import { View, Alert, AsyncStorage, StatusBar } from 'react-native';
 import { Container, Button, Content, Text, H1, List, ListItem } from 'native-base';
 import Dialog from 'react-native-dialog';
 
@@ -79,6 +79,7 @@ const ItemsScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+                <StatusBar backgroundColor = '#ffffff' barStyle = 'dark-content' />
                 <View style={{ padding: 10, alignItems: 'center' }}>
                     <H1 style={{ fontWeight: 'bold' }}>Items</H1>
                     <Text style={{ fontSize: 15 }}>Add or remove items.</Text>
@@ -118,9 +119,12 @@ const ItemsScreen = ({ navigation }) => {
 ItemsScreen.navigationOptions = {
     title: 'Items',
     headerStyle: {
-        backgroundColor: '#0a8508'
+        backgroundColor: '#ffffff',
+        borderBottomWidth: 0,
+        elevation: 0,
+        shadowOpacity: 0
     },
-    headerTintColor: '#ffffff',
+    headerTintColor: '#000000',
 };
 
 export default ItemsScreen

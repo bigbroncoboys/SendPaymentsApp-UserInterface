@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { View, AsyncStorage, StatusBar } from 'react-native';
 import { Container, Button, Content, Text, H1, List, ListItem } from 'native-base';
 
 const ChargeScreen = ({ navigation }) => {
@@ -71,6 +71,7 @@ const ChargeScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+                <StatusBar backgroundColor = '#ffffff' barStyle = 'dark-content' />
                 <View style={{ padding: 10, alignItems: 'center' }}>
                     <H1 style={{ fontWeight: 'bold' }}>Charge</H1>
                     <Text style={{ fontSize: 15 }}> Add items to charge.</Text>
@@ -99,9 +100,12 @@ const ChargeScreen = ({ navigation }) => {
 ChargeScreen.navigationOptions = {
     title: 'Charge',
     headerStyle: {
-        backgroundColor: '#0a8508'
+        backgroundColor: '#ffffff',
+        borderBottomWidth: 0,
+        elevation: 0,
+        shadowOpacity: 0
     },
-    headerTintColor: '#ffffff',
+    headerTintColor: '#000000',
 };
 
 export default ChargeScreen

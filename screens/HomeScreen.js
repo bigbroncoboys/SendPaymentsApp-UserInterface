@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { View, AsyncStorage, StatusBar } from 'react-native';
 import { Container, Content, Button, Icon, Text, Thumbnail, H1 } from 'native-base';
 import { StackActions, NavigationActions } from 'react-navigation';
 
@@ -54,6 +54,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+                <StatusBar backgroundColor = '#ffffff' barStyle = 'dark-content' />
                 <View style={{ alignItems: 'center' }}>
                     <Thumbnail circle large source = {require('../assets/images/defaultuser.jpg')}/>
                     <H1 style={{ fontWeight: 'bold' }}>{businessName}</H1>
@@ -108,9 +109,12 @@ const HomeScreen = ({ navigation }) => {
 HomeScreen.navigationOptions = {
     title: 'Home',
     headerStyle: {
-        backgroundColor: '#0a8508'
+        backgroundColor: '#ffffff',
+        borderBottomWidth: 0,
+        elevation: 0,
+        shadowOpacity: 0
     },
-    headerTintColor: '#ffffff',
+    headerTintColor: '#000000',
 };
 
 export default HomeScreen

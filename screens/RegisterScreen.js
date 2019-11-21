@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, StatusBar } from 'react-native';
 import { Container, Button, Content, Text, H1, H3, Item, Input, Label, List, ListItem, Picker, Icon } from 'native-base';
 import Divider from 'react-native-divider';
 import Dialog from 'react-native-dialog';
@@ -75,6 +75,7 @@ const RegisterScreen = ({ navigation }) => {
     return (
         <Container>
             <Content>
+                <StatusBar backgroundColor = '#ffffff' barStyle = 'dark-content' />
                 <View style={{ alignItems: 'center', paddingTop: 30 }}>
                     <H1 style={{ fontWeight: 'bold' }}>Welcome to Send!</H1>
                     <Text style={{ fontSize: 15 }}>Please describe your business.</Text>
@@ -166,9 +167,12 @@ const RegisterScreen = ({ navigation }) => {
 RegisterScreen.navigationOptions = {
     title: 'Register',
     headerStyle: {
-        backgroundColor: '#0a8508'
+        backgroundColor: '#ffffff',
+        borderBottomWidth: 0,
+        elevation: 0,
+        shadowOpacity: 0
     },
-    headerTintColor: '#ffffff',
+    headerTintColor: '#000000',
 };
 
 export default RegisterScreen
