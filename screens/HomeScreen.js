@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, AsyncStorage } from 'react-native';
-import { Container, Content, Button, Icon, Text, H1 } from 'native-base';
+import { Container, Content, Button, Icon, Text, Thumbnail, H1 } from 'native-base';
 import { StackActions, NavigationActions } from 'react-navigation';
 
 const HomeScreen = ({ navigation }) => {
@@ -55,6 +55,7 @@ const HomeScreen = ({ navigation }) => {
         <Container>
             <Content contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
                 <View style={{ alignItems: 'center' }}>
+                    <Thumbnail circle large source = {require('../assets/images/defaultuser.jpg')}/>
                     <H1 style={{ fontWeight: 'bold' }}>{businessName}</H1>
                     <Text style={{ fontSize: 15 }}>What would you like to do?</Text>
                 </View>
